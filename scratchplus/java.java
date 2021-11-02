@@ -16,5 +16,6 @@ public class java{
             counter++;
         }
         System.out.print(max +"\n" + digit);
+        sa.close();
     }
 }
