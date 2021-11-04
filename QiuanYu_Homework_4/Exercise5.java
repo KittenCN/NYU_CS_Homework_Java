@@ -1,4 +1,4 @@
-package QiuanYu__Homework_4;
+package QiuanYu_Homework_4;
 import java.util.*;
 public class Exercise5 {
     public static boolean checkmul(int num1, int num2) {

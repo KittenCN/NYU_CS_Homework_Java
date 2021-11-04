@@ -1,4 +1,4 @@
-package QiuanYu__Homework_4;
+package QiuanYu_Homework_4;
 import java.util.*;
 public class Exercise4 {
     public static boolean checkeven(int num){

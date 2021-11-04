@@ -1,4 +1,4 @@
-package QiuanYu__Homework_4;
+package QiuanYu_Homework_4;
 import java.util.*;
 public class Exercise3 {
     public static final double pi = 3.1415926;

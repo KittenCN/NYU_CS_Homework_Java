@@ -1,4 +1,4 @@
-package QiuanYu__Homework_4;
+package QiuanYu_Homework_4;
 import java.util.*;
 import java.text.DecimalFormat;
 import static java.lang.System.out;
