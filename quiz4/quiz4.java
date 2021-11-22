@@ -62,6 +62,18 @@ public class quiz4 {
         public void setPermission(int permission) {
             this.permission = permission;
         }
+        public void changePassword(){
+            sa = new Scanner(System.in);
+            System.out.println("Enter your new password: ");
+            String newPassword = sa.nextLine();
+            this.password = newPassword;
+        }
+        public void changeUsername(){
+            sa = new Scanner(System.in);
+            System.out.println("Enter your new username: ");
+            String newUsername = sa.nextLine();
+            this.username = newUsername;
+        }
     }
     public static class Project{
         private String projectid;
@@ -105,26 +117,24 @@ public class quiz4 {
         public void setProjecttype(int projecttype) {
             this.projecttype = projecttype;
         }        
+        public void printProject(){
+            System.out.println("Project ID: " + this.projectid);
+            System.out.println("Project Name: " + this.projectname);
+            System.out.println("Project Budget: " + this.projectbudget);
+            System.out.println("Project Type: " + this.projecttype);
+        }
     }
     public static Users[] users = new Users[255];
     public static Project[] projects = new Project[255];
-    public static boolean login(String username, String password){
+    public static int login(String username, String password){
         for(int i = 0; i < users.length; i++){
             if(users[i] != null){
                 if(users[i].getUsername().equals(username) && users[i].getPassword().equals(password)){
-                    return true;
+                    return i;
                 }
             }
         }
-        return false;
-    }
-    public static void editUser(int index){
-        System.out.println("Please enter the new username: ");
-        String username = sa.nextLine();
-        System.out.println("Please enter the new password: ");
-        String password = sa.nextLine();
-        System.out.println("Please enter the new firstname: ");
-        String firstname = sa.nextLine();
+        return -1;
     }
     public static void main(String[] args) {
         users[0] = new Users("admin", "admin", "admin", "admin", "admin", 1);
@@ -133,9 +143,11 @@ public class quiz4 {
         projects[0] = new Project("P001", "Project 1", 1000000, 2);
         projects[1] = new Project("P002", "Project 2", 2000000, 2);
         projects[2] = new Project("P003", "Project 3", 3000000, 3);
+        System.out.print("Enter Username:");
         String username = sa.nextLine();
+        System.out.print("Enter Password:");
         String password = sa.nextLine();
-        while(!login(username, password)){
+        while(login(username, password) == -1){
             int tmp = 0;
             System.out.println("Invalid username or password");
             username = sa.nextLine();
@@ -146,21 +158,40 @@ public class quiz4 {
                 System.exit(0);
             }
         }
+        int userIndex = login(username, password);
         int choice = 0;
-        System.out.println("Welcome " + users[0].getFirstname() + " " + users[0].getLastname());
-        while(choice != 99){
-            System.out.println("1. Edit user info");
-            System.out.println("2. List project info");
+        System.out.println("Welcome " + users[userIndex].getFirstname() + " " + users[userIndex].getLastname());
+        while(choice != 99 && (users[userIndex].getPermission() == 2 || users[userIndex].getPermission() == 3)){
+            System.out.println("1. Change username");
+            System.out.println("2. Change password");
+            System.out.println("3. List project info");
+            System.out.println("4. Quit");
             choice = sa.nextInt();
             switch(choice){
                 case 1:
-                    //edituserinfo();
+                    users[userIndex].changeUsername();
                     break;
                 case 2:
-                    //listprojectinfo();
+                    users[userIndex].changePassword();
+                    break;
+                case 3:
+                    for(int i = 0; i < projects.length; i++){
+                        if(projects[i] != null){
+                            if(projects[i].getProjecttype() == users[userIndex].getPermission()){
+                                System.out.println("Project ID: " + projects[i].getProjectid());
+                                System.out.println("Project Name: " + projects[i].getProjectname());
+                                System.out.println("Project Budget: " + projects[i].getProjectbudget());
+                                System.out.println("Project Type: " + projects[i].getProjecttype());
+                            }
+                        }
+                    }
+                    break;
+                case 4:
+                    System.out.println("Goodbye");
+                    choice = 99;
                     break;
                 default:
-                    choice = 99;
+                    System.out.println("Invalid choice");
                     break;
             }
         }
