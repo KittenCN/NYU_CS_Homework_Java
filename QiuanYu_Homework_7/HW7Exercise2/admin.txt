@@ -1,1 +1,2 @@
-admin,password,admin@admin.com
+admin,admin,admin@admin.com
+superadmin,admin,admin1@admin.com

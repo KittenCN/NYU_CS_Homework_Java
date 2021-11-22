@@ -1,6 +1,9 @@
 package QiuanYu_Homework_7.HW7Exercise2;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
@@ -207,7 +210,7 @@ class User{
     }
 }
 class PhoneBookAdmin extends User{
-    private String email;
+    String email;
     public PhoneBookAdmin(){
         super();
         email = "";
@@ -216,7 +219,7 @@ class PhoneBookAdmin extends User{
         super(username, password, phoneBookDirectory);
         this.email = email;
     }
-    public void PrintUserInfo(){
+    public void PrintAdminInfo(){
         super.PrintUserInfo();
         System.out.println("Email: " + email);
     }
@@ -257,7 +260,7 @@ class NormalUser extends User{
         super(username, password, phoneBookDirectory);
         this.id = id;
     }
-    public void PrintUserInfo(){
+    public void printUserInfo(){
         super.PrintUserInfo();
         System.out.println("ID: " + id);
     }
@@ -275,16 +278,34 @@ class NormalUser extends User{
     }
 }   
 class PhoneBookApplication{
+    public static void saveToAdminFile(Path path, PhoneBookAdmin[] admin){
+        try{
+            BufferedWriter out = new BufferedWriter(new FileWriter(path.toString()));
+            for(int i = 0; i < admin.length; i++){
+                if(admin[i] != null){
+                    String strWr = admin[i].username + "," + admin[i].password + "," + admin[i].email + "\r\n";
+                    out.write(strWr);
+                }
+            }
+            out.close();
+        }catch(Exception e){
+            System.out.println("Error: " + e);
+        }
+    }
     public static void main(String[] args) {
         Scanner sa = new Scanner(System.in);
-        File directory = new File("");
-        //File directory = new File("QiuanYu_Homework_7");
-        Path adminpath = Paths.get(directory.getAbsolutePath() + "/HW7Exercise2/admin.txt");
-        Path userpath = Paths.get(directory.getAbsolutePath() + "/HW7Exercise2/user.txt");
         PhoneBookAdmin[] admin = new PhoneBookAdmin[255];
         NormalUser[] user = new NormalUser[255];
         int adminIndex = 0;
         int userIndex = 0;
+        //File directory = new File("");
+        File directory = new File("QiuanYu_Homework_7/HW7Exercise2/");
+        Path adminpath = Paths.get(directory.getAbsolutePath() + "/admin.txt");
+        Path userpath = Paths.get(directory.getAbsolutePath() + "/user.txt");
+        if(!Files.exists(adminpath) || !Files.exists(userpath)){
+            System.out.println("The path of file does not exist, please check parameters！");
+            System.exit(0);
+        }
         try {
             Scanner adminsa = new Scanner(adminpath);
             Scanner usersa = new Scanner(userpath);
@@ -319,7 +340,7 @@ class PhoneBookApplication{
                     if(admin[i].username.equals(username) && admin[i].password.equals(password)){
                         isAdmin = true;
                         int choice = 0;
-                        while(choice != 9){
+                        while(choice != 10){
                             System.out.println("Welcome Admin!");
                             System.out.println("1. Add entry");
                             System.out.println("2. Edit entry");
@@ -329,7 +350,8 @@ class PhoneBookApplication{
                             System.out.println("6. Search by id");
                             System.out.println("7. Change password");
                             System.out.println("8. Change username");
-                            System.out.println("9. Logout");
+                            System.out.println("9. Print Admin info");
+                            System.out.println("10. Logout");
                             choice = sa.nextInt();
                             switch(choice){
                                 case 1:
@@ -386,13 +408,18 @@ class PhoneBookApplication{
                                     System.out.println("Enter new password: ");
                                     String newPassword = sa.next();
                                     admin[i].ChangePassword(oldPassword, newPassword);
+                                    saveToAdminFile(adminpath, admin);
                                     break;
                                 case 8: 
                                     System.out.println("Enter new username: ");
                                     String newUsername = sa.next();
                                     admin[i].ChangeUserName(newUsername);
+                                    saveToAdminFile(adminpath, admin);
                                     break;
                                 case 9:
+                                    admin[i].PrintAdminInfo();
+                                    break;
+                                case 10:
                                     System.out.println("Logout successfully!");
                                     break;
                                 default:    
@@ -410,13 +437,14 @@ class PhoneBookApplication{
                         if(user[i].username.equals(username) && user[i].password.equals(password)){
                             isUser = true;
                             int choice = 0;
-                            while(choice != 5){
+                            while(choice != 6){
                                 System.out.println("Welcome User!");
                                 System.out.println("1. Add entry");
                                 System.out.println("2. Edit entry");
                                 System.out.println("3. Sort phone book");
                                 System.out.println("4. Search by phone number");
-                                System.out.println("5. Logout");
+                                System.out.println("5. Print User info");
+                                System.out.println("6. Logout");
                                 choice = sa.nextInt();
                                 switch(choice){
                                     case 1:
@@ -456,6 +484,9 @@ class PhoneBookApplication{
                                         }
                                         break;
                                     case 5:
+                                        user[i].printUserInfo();
+                                        break;
+                                    case 6:
                                         System.out.println("Logout successfully!");
                                         break;
                                     default:    
