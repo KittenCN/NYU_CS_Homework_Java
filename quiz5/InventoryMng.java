@@ -1,3 +1,4 @@
+package quiz5;
 import java.util.*;
 class House{
     int ID;
