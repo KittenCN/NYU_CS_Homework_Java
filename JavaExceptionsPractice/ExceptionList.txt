@@ -1,0 +1,12 @@
+Part 1:
+    Input Mismatch Exception
+    Name cannot be empty
+Part 2:
+    File does not exist
+    Number of lines to read is out of range
+    No such element
+    IO Exception
+Part 3:
+    Arithmetic Exception
+Bonus:
+    throws IOException
