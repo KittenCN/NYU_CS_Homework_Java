@@ -99,6 +99,7 @@ class jep{
     public static void main(String[] args) throws IOException {
         Student s = new Student();
         Scanner sc = new Scanner(System.in);
+        // Part 1
         while(true){
             try{
                 System.out.println("Enter the age of the student");
@@ -127,6 +128,7 @@ class jep{
                 System.out.println("!!Finally block is executed");
             }
         }
+        // Part 2
         try{
             String FileAddress = "JavaExceptionsPractice/";
             FileIO f = new FileIO(FileAddress);
@@ -140,6 +142,7 @@ class jep{
         finally{
             System.out.println("!!Finally block is executed");
         }
+        //Part 3
         System.out.println("Enter 1st number: ");
         int num1 = sc.nextInt();
         System.out.println("Enter 2nd number: ");
@@ -155,6 +158,7 @@ class jep{
             System.out.println("!!Finally block is executed");
         }
         sc.close();
+        // Part 4
         System.out.println(Student.getSomeMotivation());
     }
 }
