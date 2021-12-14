@@ -114,11 +114,11 @@ class Courses extends Course{
                     String course_instructor = sa.nextLine();
                     System.out.println("Enter the course section number: ");
                     int course_section_number = sa.nextInt();
-                    System.out.println("Enter the current students: ");
-                    int current_students = sa.nextInt();
+                    System.out.println("Enter the course students: ");
+                    int course_students = sa.nextInt();
                     System.out.println("Enter course location: ");
                     String course_location = sa.nextLine();
-                    Course newCourse = new Course(course_name, course_instructor, course_section_number, current_students, course_location);
+                    Course newCourse = new Course(course_name, course_instructor, course_section_number, course_students, course_location);
                     courses[intIndex++] = newCourse;
                     break;
                 case 3:
@@ -139,10 +139,15 @@ class Courses extends Course{
                         System.out.println("Enter the new course section number: ");
                         course_section_number = sa.nextInt();
                         System.out.println("Enter the new current students: ");
-                        current_students = sa.nextInt();
+                        course_students = sa.nextInt();
                         System.out.println("Enter the new course location: ");
                         course_location = sa.nextLine();
-                        
+                        Course current_course = courses[index];
+                        current_course.setstrCourseName(course_name);
+                        current_course.setstrInstructor(course_instructor);
+                        current_course.setintSectionNumber(course_section_number);
+                        current_course.setintStudents(course_students);
+                        current_course.setstrLocation(course_location);
                     }
                     break;
                 case 4:
