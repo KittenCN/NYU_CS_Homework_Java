@@ -23,7 +23,7 @@ class Course{
         this.intStudents = intStudents;
         this.strLocation = strLocation;
     }
-    public String getstrCourseNmae(){
+    public String getstrCourseName(){
         return strCourseName;
     }
     public String getstrInstructor(){
@@ -38,7 +38,7 @@ class Course{
     public String getstrLocation(){
         return strLocation;
     }
-    public void setstrCourseNmae(String strCourseName){
+    public void setstrCourseName(String strCourseName){
         this.strCourseName = strCourseName;
     }
     public void setstrInstructor(String strInstructor){
@@ -54,8 +54,22 @@ class Course{
         this.strLocation = strLocation;
     }
 }
+class cmp implements Comparator<Course>{
+    public int compare(Course courseA, Course courseB){
+        if(courseA.intStudents < courseB.intStudents){
+            return -1;
+        }
+        else if(courseA.intStudents == courseB.intStudents){
+            return 0;
+        }
+        else{
+            return 1;
+        }
+    }
+}
 class Courses extends Course{
     public static String strPath = "FinalExamFALL2021/";
+    public static String strUseless = "";
     final static int intMaxIndex = 1005;
     public static int intIndex = 0;
     public static Course[] courses = new Course[intMaxIndex];
@@ -81,6 +95,7 @@ class Courses extends Course{
         catch(NoSuchElementException e){
             System.out.println("Read complete!");
         }
+        sc.close();
         return Courses;
     }
     public static int find(String strCourseName, int intSectionNumber){
@@ -92,6 +107,58 @@ class Courses extends Course{
         }
         return intAns;
     }
+    public static void show(boolean sorted, int intMaxLine, int intMaxNum){
+        Course[] tempCourses = courses;
+        if(sorted){
+            Arrays.sort(tempCourses, 0, intIndex, new cmp());
+        }
+        for(int i = 0; i < intMaxLine; ++i){
+            if((intMaxNum > 0 && tempCourses[i].intStudents > intMaxNum) || intMaxNum <= 0){
+                System.out.println(tempCourses[i].strCourseName + " | " + tempCourses[i].strInstructor + " | " + tempCourses[i].intSectionNumber + " | " + tempCourses[i].intStudents + " | " + tempCourses[i].strLocation);
+            }
+        }
+    }
+    public static void show(int intLine){
+        Course[] tempCourses = courses;
+        int i = intLine;
+        System.out.println(tempCourses[i].strCourseName + " | " + tempCourses[i].strInstructor + " | " + tempCourses[i].intSectionNumber + " | " + tempCourses[i].intStudents + " | " + tempCourses[i].strLocation);
+    }
+    public static void del(int intLine){
+        Course[] tempCourses = courses;
+        courses = new Course[intMaxIndex];
+        for(int i = 0; i < intLine; ++i){
+            courses[i] = tempCourses[i]; 
+        }
+        for(int i = intLine + 1; i < intIndex; ++i){
+            courses[i - 1] = tempCourses[i];
+        }
+        intIndex--;
+    }
+    public static void saveToFile(String strFilePath, int intMaxNum){
+        Course[] Courses = new Course[intMaxIndex];
+        Course[] tempCourses = courses;
+        Arrays.sort(tempCourses, 0, intIndex, new cmp());
+        int intAnsIndex = 0;
+        for(int i = 0; i < intIndex; ++i){
+            if((intMaxNum > 0 && tempCourses[i].intStudents > intMaxNum) || intMaxNum <= 0){
+                Course temp = new Course(tempCourses[i].strCourseName, tempCourses[i].strInstructor, tempCourses[i].intSectionNumber, tempCourses[i].intStudents, tempCourses[i].strLocation);
+                Courses[intAnsIndex++] = temp;
+            }
+        }
+        try{
+            Path path = Paths.get(strFilePath);
+            BufferedWriter out = new BufferedWriter(new FileWriter(path.toString()));
+            for(int i = 0; i < intAnsIndex; i++){
+                if(Courses[i] != null){
+                    String strWr = Courses[i].strCourseName + ',' + Courses[i].strInstructor + ',' + Courses[i].intSectionNumber + ',' + Courses[i].intStudents + ',' + Courses[i].strLocation + "\r\n";
+                    out.write(strWr);
+                }
+            }
+            out.close();
+        }catch(Exception e){
+            System.out.println("Error: " + e);
+        }
+    }
     public static void main(String[] args) throws FileNotFoundException {
         Scanner sa = new Scanner(System.in);
         String strMenu = "1. Load data from the CSV file\r\n2. Add a new course\r\n3. Edit a course\r\n4. Display all courses\r\n5. Search for a course\r\n6. Delete a course\r\n7. Sort courses by number of students registered and display them\r\n8. Display all courses with number of students above 30 students\r\n9. Write data to a new text file\r\n10. Exit";
@@ -100,6 +167,7 @@ class Courses extends Course{
         while(intChoice != 10){
             System.out.println(strMenu);
             intChoice = sa.nextInt();
+            strUseless = sa.nextLine(); // fix nextLine bug
             switch(intChoice){
                 case 1:
                     // Load data from the CSV file
@@ -110,13 +178,15 @@ class Courses extends Course{
                     // Add a new course
                     System.out.print("Enter the course name: ");
                     String course_name = sa.nextLine();
-                    System.out.println("Enter the instructor: ");
+                    System.out.print("Enter the instructor: ");
                     String course_instructor = sa.nextLine();
-                    System.out.println("Enter the course section number: ");
+                    System.out.print("Enter the course section number: ");
                     int course_section_number = sa.nextInt();
-                    System.out.println("Enter the course students: ");
+                    strUseless = sa.nextLine();  
+                    System.out.print("Enter the course students: ");
                     int course_students = sa.nextInt();
-                    System.out.println("Enter course location: ");
+                    strUseless = sa.nextLine();
+                    System.out.print("Enter course location: ");
                     String course_location = sa.nextLine();
                     Course newCourse = new Course(course_name, course_instructor, course_section_number, course_students, course_location);
                     courses[intIndex++] = newCourse;
@@ -125,22 +195,25 @@ class Courses extends Course{
                     // Edit a course
                     System.out.print("Enter the course name: ");
                     course_name = sa.nextLine();
-                    System.out.println("Enter the course section number: ");
+                    System.out.print("Enter the course section number: ");
                     course_section_number = sa.nextInt();
+                    strUseless = sa.nextLine();
                     int index = find(course_name, course_section_number);
                     if(index < 0){
                         System.out.println("Course not found!");
                     }
                     else{
-                        System.out.println("Enter the new course name: ");
+                        System.out.print("Enter the new course name: ");
                         course_name = sa.nextLine();
-                        System.out.println("Enter the new instructor: ");
+                        System.out.print("Enter the new instructor: ");
                         course_instructor = sa.nextLine();
-                        System.out.println("Enter the new course section number: ");
+                        System.out.print("Enter the new course section number: ");
                         course_section_number = sa.nextInt();
-                        System.out.println("Enter the new current students: ");
+                        strUseless = sa.nextLine();
+                        System.out.print("Enter the new current students: ");
                         course_students = sa.nextInt();
-                        System.out.println("Enter the new course location: ");
+                        strUseless = sa.nextLine();
+                        System.out.print("Enter the new course location: ");
                         course_location = sa.nextLine();
                         Course current_course = courses[index];
                         current_course.setstrCourseName(course_name);
@@ -151,20 +224,51 @@ class Courses extends Course{
                     }
                     break;
                 case 4:
-                    System.out.println("Display all courses");
+                    // Display all courses
+                    show(false, intIndex, 0);
                     break;
                 case 5:
-                    System.out.println("Search for a course");
+                    // Search for a course
+                    System.out.print("Enter the course name: ");
+                    course_name = sa.nextLine();
+                    System.out.print("Enter the course section number: ");
+                    course_section_number = sa.nextInt();
+                    strUseless = sa.nextLine();
+                    index = find(course_name, course_section_number);
+                    if(index < 0){
+                        System.out.println("Course not found!");
+                    }
+                    else{
+                        show(index);
+                    }
                     break;
                 case 6:
-                    System.out.println("Delete a course");
+                    //  Delete a course
+                    System.out.print("Enter the course name: ");
+                    course_name = sa.nextLine();
+                    System.out.print("Enter the course section number: ");
+                    course_section_number = sa.nextInt();
+                    strUseless = sa.nextLine();
+                    index = find(course_name, course_section_number);
+                    if(index < 0){
+                        System.out.println("Course not found!");
+                    }
+                    else{
+                        del(index);
+                    }
                     break;
                 case 7:
-                    System.out.println("Sort courses by number of students registered and display them");
+                    // Sort courses by number of students registered and display them
+                    show(true, intIndex, 0);
                     break;
                 case 8:
+                    // Display all courses with number of students above 30 students
+                    show(true, intIndex, 30);
                     break;
                 case 9:
+                    // Write data (of the results of menu option# 8) to a new text file
+                    strFileName = "newdata.csv";
+                    saveToFile(strPath + strFileName, 30);
                     break;
                 case 10:
                     System.out.println("Bye!");
