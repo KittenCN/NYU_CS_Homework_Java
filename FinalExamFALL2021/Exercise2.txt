@@ -185,7 +185,7 @@ Research the following Questions and answer in your own words:
 	}
 
 4. Define OOP in your own words and provide the benefits of OOP
-	OOP regards the computer program as a set of objects, and each object can receive and process the messages sent by other objects. The execution of the computer program is a series of messages passed between various objects.
+	OOP regards the computer program as a set of objects, and each object can receive and process the messages sent by other objects. The execution of the computer program is a series of messages passed 	between various objects.
 
 5. Is the C language an OOP language?
 	No.
