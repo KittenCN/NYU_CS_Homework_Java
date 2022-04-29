@@ -1,0 +1,422 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch Courses",
+            "request": "launch",
+            "mainClass": "FinalExamFALL2021.Courses",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch Exercise3",
+            "request": "launch",
+            "mainClass": "FinalExamFALL2021.Exercise3",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch ATM",
+            "request": "launch",
+            "mainClass": "HW3.ATM",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch Exercise5A",
+            "request": "launch",
+            "mainClass": "HW3.Exercise5A",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch Exercise5B",
+            "request": "launch",
+            "mainClass": "HW3.Exercise5B",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch ascii",
+            "request": "launch",
+            "mainClass": "HW3.ascii",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch poi",
+            "request": "launch",
+            "mainClass": "HW3.poi",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch prefix",
+            "request": "launch",
+            "mainClass": "HW3.prefix",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch Test",
+            "request": "launch",
+            "mainClass": "HW_1_OOP_Recap_attached_files.Test",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch PostfixCalculator",
+            "request": "launch",
+            "mainClass": "HW_2_Postfix_attached.PostfixCalculator",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch ExpressionTree",
+            "request": "launch",
+            "mainClass": "HW_3_Expression_Tree_attached.ExpressionTree",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main",
+            "request": "launch",
+            "mainClass": "HW_4_Huffman_Encoder_attached_files.Main",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch HuffmanConverter",
+            "request": "launch",
+            "mainClass": "HW_5_Huffman_Encoder_Part_2_attached_files.HuffmanConverter",
+            "projectName": "NYU_CS_Homework_Java_c63181be",
+            "args": "love_poem_80.txt"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main(1)",
+            "request": "launch",
+            "mainClass": "HW_5_Huffman_Encoder_Part_2_attached_files.Main",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch jep",
+            "request": "launch",
+            "mainClass": "JavaExceptionsPractice.jep",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch BookMng",
+            "request": "launch",
+            "mainClass": "QiuanYuQuiz3.ExerciseOne_BookMng.BookMng",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch Exercise1",
+            "request": "launch",
+            "mainClass": "QiuanYu_Homework_4.Exercise1",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch Exercise2",
+            "request": "launch",
+            "mainClass": "QiuanYu_Homework_4.Exercise2",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch Exercise3(1)",
+            "request": "launch",
+            "mainClass": "QiuanYu_Homework_4.Exercise3",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch Exercise4",
+            "request": "launch",
+            "mainClass": "QiuanYu_Homework_4.Exercise4",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch Exercise5",
+            "request": "launch",
+            "mainClass": "QiuanYu_Homework_4.Exercise5",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch Exercise6",
+            "request": "launch",
+            "mainClass": "QiuanYu_Homework_4.Exercise6",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch Exercise7",
+            "request": "launch",
+            "mainClass": "QiuanYu_Homework_4.Exercise7",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch Exercise8",
+            "request": "launch",
+            "mainClass": "QiuanYu_Homework_4.Exercise8",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch Exercise9",
+            "request": "launch",
+            "mainClass": "QiuanYu_Homework_4.Exercise9",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch Exercise1(1)",
+            "request": "launch",
+            "mainClass": "QiuanYu_Homework_5.Exercise1",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch Exercise2(1)",
+            "request": "launch",
+            "mainClass": "QiuanYu_Homework_5.Exercise2",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch Exercise3(2)",
+            "request": "launch",
+            "mainClass": "QiuanYu_Homework_5.Exercise3",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch Exercise4(1)",
+            "request": "launch",
+            "mainClass": "QiuanYu_Homework_5.Exercise4",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch Exercise1(2)",
+            "request": "launch",
+            "mainClass": "QiuanYu_Homework_6.Exercise1",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch Exercise2(2)",
+            "request": "launch",
+            "mainClass": "QiuanYu_Homework_6.Exercise2",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch Exercise3(3)",
+            "request": "launch",
+            "mainClass": "QiuanYu_Homework_6.Exercise3",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch Exercise4(2)",
+            "request": "launch",
+            "mainClass": "QiuanYu_Homework_6.Exercise4",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch Exercise5(1)",
+            "request": "launch",
+            "mainClass": "QiuanYu_Homework_6.Exercise5",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch PhoneBook",
+            "request": "launch",
+            "mainClass": "QiuanYu_Homework_7.HW7Exercise1.PhoneBook",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch PhoneBookApplication",
+            "request": "launch",
+            "mainClass": "QiuanYu_Homework_7.HW7Exercise2.PhoneBookApplication",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch IsSorted",
+            "request": "launch",
+            "mainClass": "QiuanYu_Midterm.IsSorted.IsSorted",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch KSmallest",
+            "request": "launch",
+            "mainClass": "QiuanYu_Midterm.KSmallest.KSmallest",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch Occurrences",
+            "request": "launch",
+            "mainClass": "QiuanYu_Midterm.Occurrences.Occurrences",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch Palindrome",
+            "request": "launch",
+            "mainClass": "QiuanYu_Midterm.Palindrome.Palindrome",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch PointOfSale",
+            "request": "launch",
+            "mainClass": "QiuanYu_Midterm.PointOfSale.PointOfSale",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch PrimeDigits",
+            "request": "launch",
+            "mainClass": "QiuanYu_Midterm.PrimeDigits.PrimeDigits",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch PrimeNumbers",
+            "request": "launch",
+            "mainClass": "QiuanYu_Midterm.PrimeNumbers.PrimeNumbers",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch Ex1",
+            "request": "launch",
+            "mainClass": "quiz2.Ex1",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch Ex2",
+            "request": "launch",
+            "mainClass": "quiz2.Ex2",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch Ex3",
+            "request": "launch",
+            "mainClass": "quiz2.Ex3",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch quiz4",
+            "request": "launch",
+            "mainClass": "quiz4.quiz4",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch HouseInventory",
+            "request": "launch",
+            "mainClass": "quiz5.HouseInventory",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch C1032_A",
+            "request": "launch",
+            "mainClass": "scratchplus.C1032_A",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch C1033_A",
+            "request": "launch",
+            "mainClass": "scratchplus.C1033_A",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch C1053_B",
+            "request": "launch",
+            "mainClass": "scratchplus.C1053_B",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch C1053_J",
+            "request": "launch",
+            "mainClass": "scratchplus.C1053_J",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch C1053_S",
+            "request": "launch",
+            "mainClass": "scratchplus.C1053_S",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch C1069_X",
+            "request": "launch",
+            "mainClass": "scratchplus.C1069_X",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch C1953_M",
+            "request": "launch",
+            "mainClass": "scratchplus.C1953_M",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch T_1867",
+            "request": "launch",
+            "mainClass": "scratchplus.T_1867",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main(2)",
+            "request": "launch",
+            "mainClass": "temp.Main",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Launch temp1",
+            "request": "launch",
+            "mainClass": "temp.temp1",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        }
+    ]
+}
