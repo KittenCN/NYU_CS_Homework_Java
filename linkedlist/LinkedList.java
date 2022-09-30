@@ -21,6 +21,7 @@ public class LinkedList<E> {
     
     private Node head;
     private Node tail; 
+    private int size;
 
 
     /*
@@ -29,6 +30,7 @@ public class LinkedList<E> {
     public LinkedList() {
         this.head = null;
         this.tail = null;
+        this.size = 0;
     }
 
     /* Adds an element 'it' at position pos, shifts elements starting at pos by
@@ -41,22 +43,25 @@ public class LinkedList<E> {
     * @throws NoSuchElementException if pos < 0 or pos > size
     */
     public boolean add (E it, int pos) throws NullPointerException, NoSuchElementException {
+        Node n = new Node(it);
         if (pos < 0 || pos > size) {
             throw new NoSuchElementException("Invalid position");
         }
         if (it == null ){
             throw new NullPointerException("it should not be null"); 
         }
-        Node n = new Node(it); 
+         
         //check where I'm adding 
         if (pos == 0 ) {
             n.next = head; 
             head = n;
+            size++;
             return true; 
         }
         else if (pos == size) { //add to the end 
             tail.next = n;
             tail = tail.next;
+            size++;
             return true; 
         }
         //adding everywhere else :
@@ -67,6 +72,7 @@ public class LinkedList<E> {
             }
             n.next = prev.next; 
             prev.next = n; 
+            size++;
             return true; 
         }
     }
@@ -86,6 +92,7 @@ public class LinkedList<E> {
         if (pos == 0 ) {
             E temp = head.data;
             head = head.next;
+            size--;
             return temp; 
         }
         else if (pos == size - 1) { //remove from the end 
@@ -96,6 +103,7 @@ public class LinkedList<E> {
             E temp = prev.next.data;
             prev.next = null;
             tail = prev;
+            size--;
             return temp; 
         }
         //removing everywhere else :
@@ -106,9 +114,9 @@ public class LinkedList<E> {
             }
             E temp = prev.next.data;
             prev.next = prev.next.next;
+            size--;
             return temp;
         }
-        return null;
     }
     
 
