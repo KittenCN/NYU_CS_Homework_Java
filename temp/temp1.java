@@ -1,40 +1,39 @@
 package temp;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
  
 public class temp1 {
+    static long position = -1;
+    public static void split(long left, long right, long target, long[] array) {
+        long middlePos = (left + right) / 2;
+        long middleValue = array[(int) middlePos];
+        if(left > right) {
+            return;
+        }
+        if(middleValue == target) {
+            position = middlePos;
+        }
+        else if(middleValue > target) {
+            split(left, middlePos - 1,target,array);
+        }
+        else {
+            split(middlePos + 1,right,target,array);
+        }
+    }
     public static void main(String[] args) {
         Scanner sa = new Scanner(System.in);
-        int number = sa.nextInt();
-        int[] mountains = new int[number];
-        int modifiedHeight = 0;
-        for(int i = 0; i < number; i++) {
-            mountains[i] = sa.nextInt();
+        long n = sa.nextLong();
+        long k = sa.nextLong();
+        long[] array = new long[(int) n];
+        for(long i = 0; i < n; i++) {
+            array[(int) i] = sa.nextLong();
         }
-        Arrays.sort(mountains);
-        for(int i = 0; i < number; i++) {
-            for(int j = number - 1; j > i; j--) {
-                if(mountains[j] - mountains[i] < 17) {
-                    break;
-                }
-                else {
-                    int heightDifference = mountains[j] - mountains[i] - 17;
-                    int addHeight = heightDifference / 2;
-                    int chopHeight =  heightDifference - addHeight;
-                    mountains[i] += addHeight;
-                    mountains[j] -= chopHeight;
-                    modifiedHeight = modifiedHeight + addHeight * addHeight + chopHeight * chopHeight;
-                }
-            }
+        split(0, n - 1, k, array);
+        if(position == -1) {
+            System.out.print(position);
         }
-        Arrays.sort(mountains);
-        System.out.println("----------------------------------------");
-        String result = "";
-        for(int i = 0; i < number; i++) {
-            result += mountains[i] + " ";
+        else {
+            System.out.print(position + 1);
         }
-        System.out.println(result);
-        // System.out.print(modifiedHeight);
         sa.close();
     }
 }
