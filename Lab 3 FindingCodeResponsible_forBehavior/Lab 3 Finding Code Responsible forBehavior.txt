@@ -1,0 +1,73 @@
+Part 1:
+1.What does System.out represent? What is it with respect to the System class (data member/field, static data member/field, method, static method, …)?
+The System.out represent a standard output stream. It's contained in System class.
+
+2.What is the type of System.out?
+The System.out is a static member of System class and is object of PrintStream
+
+3.Which class is println() function defined in?
+The println() function is a method of PrintStream.
+
+4.There are several println functions. How do they differ? Which function is called/used in the above program (on the last line of the code)?
+The type of output data are different.
+PrintStream.println(java.lang.Object) is used in the above program.
+
+5.println calls valueOf function while it executes. What class is this function defined in?
+java.lang.enum
+
+6.There are several valueOf functions. Which function is used in the above program?
+valueOf(Object o)  
+
+7.valueOf function calls another function. In which class is that function defined?
+.toString()
+
+8.Reading all the documentation, were you able to figure out where the square brackets and the commas in the output come from? 
+Because "ArrayList" extend "AbstractList", and "AbstractList" extend "AbstractCollection",finally"AbstractCollection" Override "toString()".
+
+Part 2:
+1.How does the sub-directory structure in the source code relates to package/import statements that you include at the top of many of your programs? (For example the first line in the program above.)
+They declare a Java class to use in the code below the import statement. 
+
+2.What are the top 24 lines of each source code file? Why do you think they are there?
+They are copyright notice. This is for declaring rights and obligations.
+
+3.Are you allowed to modify and redistribute the source code of OpenJDK?
+yes.
+
+Part 3:
+1.Find and list some parts in the source code of the toString function (the one responsible for putting together string representation of an ArrayList object) that are unfamiliar/strange.
+public String toString() {
+        return getClass().getName() + "@" + Integer.toHexString(hashCode());
+    }
+
+2. Indicate the line of code that produces the open square bracket ”[” (specify the line(s) number and copy the line(s) here).
+StringBuilder sb = new StringBuilder();
+        sb.append('[');
+3.Indicate the line of code that produces the close square bracket ”]” (specify the line(s) number and copy the line(s) here).
+for (;;) {
+            E e = it.next();
+            sb.append(e == this ? "(this Collection)" : e);
+            if (! it.hasNext())
+                return sb.append(']').toString();
+            sb.append(',').append(' ');
+        }
+4.Indicate the line of code that places the comma and space between the elements in the ArrayList (specify the line(s) number and copy the line(s) here).
+sb.append(',').append(' ');
+
+Part4:
+1. What package is String class located in? How does this information help you to find the source code file for this class?
+java.lang
+So the source code is in the "java/lang/" directory。
+
+2.How are the characters in a String object actually stored? Can you find a data field that stores all the characters?
+Strings in Java can only be located in two areas of memory: the constant pool and the Java heap. The constant pool maintains a StringTable, which is a hashtable with a string hashcode as the key and a string reference as the value; the Java heap stores just plain old string objects.
+
+3.Look at the charAt method. It makes calls to charAt methods in two other classes depending on the type of the string. Look at the charAt method in the StringLatin1 class. Make sure you understand how that method works. What is the performance of this method? 
+It's a constant.
+
+4.Look at the compareTo method implementation. It makes calls to compareTo methods in two other classes depending on the type of the string. Look at the compareTo method in the StringLatinclass. Make sure you understand how that method works. What is the performance of this method?
+It's a constant.
+
+5.Look at the toString method in the String class? What does it do? What do you think would happen if the method was removed from this class?
+This object (which is already a string!) is itself returned.
+If the method was removed, the object which is already a string will not be returned.
