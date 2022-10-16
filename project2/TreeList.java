@@ -99,6 +99,20 @@ public class TreeList{
 		}
 		return count;
 	}
+	public ArrayList<String> getMatchingSpecies(String speciesName){
+		ArrayList<String> matchList = new ArrayList<String>();
+		for (int i =0;i<this.nodes.size();i++){
+			String thisSpc = this.nodes.get(i).tree.getSpc_common();
+			String thisSpcLower = thisSpc.toLowerCase();
+			
+			if (thisSpcLower.contains(speciesName.toLowerCase())){
+				if (!(matchList.contains(thisSpc))){
+					matchList.add(thisSpc);
+				}
+			}
+		}
+		return matchList;
+	}
 	@Override
 	public String toString(){
 		String output = "";
