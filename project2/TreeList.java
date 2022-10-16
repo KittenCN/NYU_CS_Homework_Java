@@ -57,7 +57,7 @@ public class TreeList{
 	public int getCountByCommonName(String SpeciesName){
 		int count = 0;
 		for (int i=0; i<this.nodes.size();i++){
-			if (this.nodes.get(i).tree.getSpc_common().equalsIgnoreCase(SpeciesName)){
+			if(this.nodes.get(i).tree.getSpc_common().toLowerCase().contains(SpeciesName.toLowerCase())){
 				count++;
 			}
 		}
@@ -66,7 +66,7 @@ public class TreeList{
 	public int getCountByLatinName(String SpeciesName){
 		int count = 0;
 		for (int i=0; i<this.nodes.size();i++){
-			if (this.nodes.get(i).tree.getSpc_latin().equalsIgnoreCase(SpeciesName)){
+			if(this.nodes.get(i).tree.getSpc_latin().toLowerCase().contains(SpeciesName.toLowerCase())){
 				count++;
 			}
 		}
@@ -75,7 +75,7 @@ public class TreeList{
 	public int getCountByBorough(String BoroughName){
 		int count = 0;
 		for (int i=0; i<this.nodes.size();i++){
-			if (this.nodes.get(i).tree.getBoroname().equalsIgnoreCase(BoroughName)){
+			if (this.nodes.get(i).tree.getBoroname().toLowerCase().equalsIgnoreCase(BoroughName.toLowerCase())){
 				count++;
 			}
 		}
@@ -84,7 +84,7 @@ public class TreeList{
 	public int getCountByCommonNameBorough(String SpeciesName, String BoroughName){
 		int count = 0;
 		for (int i=0; i<this.nodes.size();i++){
-			if (this.nodes.get(i).tree.getSpc_common().equalsIgnoreCase(SpeciesName) && this.nodes.get(i).tree.getBoroname().equalsIgnoreCase(BoroughName)){
+			if(this.nodes.get(i).tree.getSpc_common().toLowerCase().contains(SpeciesName.toLowerCase()) && this.nodes.get(i).tree.getBoroname().toLowerCase().equalsIgnoreCase(BoroughName.toLowerCase())){
 				count++;
 			}
 		}
@@ -93,25 +93,51 @@ public class TreeList{
 	public int getCountByLatinNameBorough(String SpeciesName, String BoroughName){
 		int count = 0;
 		for (int i=0; i<this.nodes.size();i++){
-			if (this.nodes.get(i).tree.getSpc_latin().equalsIgnoreCase(SpeciesName) && this.nodes.get(i).tree.getBoroname().equalsIgnoreCase(BoroughName)){
+			if(this.nodes.get(i).tree.getSpc_latin().toLowerCase().contains(SpeciesName.toLowerCase()) && this.nodes.get(i).tree.getBoroname().toLowerCase().equalsIgnoreCase(BoroughName.toLowerCase())){
 				count++;
 			}
 		}
 		return count;
 	}
-	public ArrayList<String> getMatchingSpecies(String speciesName){
+	public ArrayList<String> getMatchingCommon(String commonName){
 		ArrayList<String> matchList = new ArrayList<String>();
 		for (int i =0;i<this.nodes.size();i++){
 			String thisSpc = this.nodes.get(i).tree.getSpc_common();
-			String thisSpcLower = thisSpc.toLowerCase();
-			
-			if (thisSpcLower.contains(speciesName.toLowerCase())){
-				if (!(matchList.contains(thisSpc))){
-					matchList.add(thisSpc);
+			if(thisSpc != null){
+				String thisSpcLower = thisSpc.toLowerCase();
+				if (thisSpcLower.contains(commonName.toLowerCase())){
+					if (!(matchList.contains(thisSpc))){
+						matchList.add(thisSpc);
+					}
 				}
 			}
 		}
-		return matchList;
+		if(matchList.size()==0){
+			return null;
+		}
+		else{
+			return matchList;
+		}
+	}
+	public ArrayList<String> getMatchingLatin(String latinName){
+		ArrayList<String> matchList = new ArrayList<String>();
+		for (int i =0;i<this.nodes.size();i++){
+			String thisSpc = this.nodes.get(i).tree.getSpc_latin();
+			if(thisSpc != null){
+				String thisSpcLower = thisSpc.toLowerCase();
+				if (thisSpcLower.contains(latinName.toLowerCase())){
+					if (!(matchList.contains(thisSpc))){
+						matchList.add(thisSpc);
+					}
+				}
+			}
+		}
+		if(matchList.size()==0){
+			return null;
+		}
+		else{
+			return matchList;
+		}
 	}
 	@Override
 	public String toString(){

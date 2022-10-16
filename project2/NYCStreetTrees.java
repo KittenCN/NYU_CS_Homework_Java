@@ -6,12 +6,11 @@ import java.util.ArrayList;
 
 public class NYCStreetTrees{
 	public static void main(String[] args) throws FileNotFoundException {
+		Scanner sc = new Scanner(System.in);
 		String fileName = null;
 		if (args.length==0){
 			System.out.println("Input the csv file name:");
-			Scanner sc = new Scanner(System.in);
 			fileName = sc.nextLine();
-			sc.close();
 			File file = new File(fileName);
 			if (!file.exists()){
 				System.err.println("File " + fileName + " can not be found!");
@@ -59,8 +58,7 @@ public class NYCStreetTrees{
 				System.err.println("Error: The file " + fileName + " is not in the correct format.");
 				continue;
 			}
-		}
-		Scanner sc = new Scanner(System.in);	
+		}	
 		while (true){
 			System.out.println("Enter the tree species to learn more about it (\"quit\" to stop): ");
 			String userInput = sc.nextLine().toLowerCase();
@@ -68,69 +66,60 @@ public class NYCStreetTrees{
 				break;
 			}
 			System.out.println("All matching species: \n");
-			ArrayList<String> mlist = tl.getMatchingSpecies(userInput);
-			for(int i = 0; i<mlist.size(); i++){
-				System.out.println(mlist.get(i));
+			ArrayList<String> commonList = tl.getMatchingCommon(userInput);
+			ArrayList<String> latinList = tl.getMatchingLatin(userInput);
+			if(commonList != null){
+				for (int i=0; i<commonList.size(); i++){
+					System.out.println(commonList.get(i));
+				}
+			}
+			if(latinList != null){
+				for (int i=0; i<latinList.size(); i++){
+					System.out.println(latinList.get(i));
+				}
 			}
 			int nycTotalCommon = tl.getCountByCommonName(userInput);
 			int nycTotalLatin = tl.getCountByLatinName(userInput);
-			int nycTotalTrees = 0;
+			int nycTotal = nycTotalCommon + nycTotalLatin;
+			int nycTotalTrees =  tl.getTotalNumberOfTrees();
 			double nycPercent = 0;
 			int manTotalSpecies = 0;
-			int manTotalTrees = 0;
+			int manTotalTrees = tl.getCountByBorough("Manhattan");
 			double manPercent = 0;
 			int bronxTotalSpecies = 0;
-			int bronxTotalTrees = 0;
+			int bronxTotalTrees = tl.getCountByBorough("bronx");
 			double bronxPercent = 0;
 			int brookTotalSpecies = 0;
-			int brookTotalTrees = 0;
+			int brookTotalTrees = tl.getCountByBorough("Brooklyn");
 			double brookPercent = 0;
 			int queensTotalSpecies = 0;
-			int queensTotalTrees = 0;
+			int queensTotalTrees = tl.getCountByBorough("Queens");
 			double queensPercent = 0;
 			int statenTotalSpecies = 0;
-			int statenTotalTrees = 0;
+			int statenTotalTrees = tl.getCountByBorough("Staten Island");
 			double statenPercent = 0;
 			if (nycTotalCommon > 0){
-				nycTotalTrees = tl.getTotalNumberOfTrees();
-				nycPercent = ((double)nycTotalCommon/(double)nycTotalTrees)*100;
-				manTotalSpecies = tl.getCountByCommonNameBorough(userInput, "manhattan");
-				manTotalTrees = tl.getCountByBorough("Manhattan");
-				manPercent = ((double)manTotalSpecies/(double)manTotalTrees)*100;
-				bronxTotalSpecies = tl.getCountByCommonNameBorough(userInput, "bronx");
-				bronxTotalTrees = tl.getCountByBorough("bronx");
-				bronxPercent = ((double)bronxTotalSpecies/(double)bronxTotalTrees)*100;
-				brookTotalSpecies = tl.getCountByCommonNameBorough(userInput, "Brooklyn");
-				brookTotalTrees = tl.getCountByBorough("Brooklyn");
-				brookPercent = ((double)brookTotalSpecies/(double)brookTotalTrees)*100;
-				queensTotalSpecies = tl.getCountByCommonNameBorough(userInput, "Queens");
-				queensTotalTrees = tl.getCountByBorough("Queens");
-				queensPercent = ((double)queensTotalSpecies/(double)queensTotalTrees)*100;
-				statenTotalSpecies = tl.getCountByCommonNameBorough(userInput, "Staten Island");
-				statenTotalTrees = tl.getCountByBorough("Staten Island");
-				statenPercent = ((double)statenTotalSpecies/(double)statenTotalTrees)*100;
+				manTotalSpecies += tl.getCountByCommonNameBorough(userInput, "manhattan");
+				bronxTotalSpecies += tl.getCountByCommonNameBorough(userInput, "bronx");
+				brookTotalSpecies += tl.getCountByCommonNameBorough(userInput, "Brooklyn");
+				queensTotalSpecies += tl.getCountByCommonNameBorough(userInput, "Queens");
+				statenTotalSpecies += tl.getCountByCommonNameBorough(userInput, "Staten Island");
 			}
-			else if(nycTotalLatin > 0){
-				nycTotalTrees = tl.getTotalNumberOfTrees();
-				nycPercent = ((double)nycTotalLatin/(double)nycTotalTrees)*100;
-				manTotalSpecies = tl.getCountByLatinNameBorough(userInput, "manhattan");
-				manTotalTrees = tl.getCountByBorough("Manhattan");
-				manPercent = ((double)manTotalSpecies/(double)manTotalTrees)*100;
-				bronxTotalSpecies = tl.getCountByLatinNameBorough(userInput, "bronx");
-				bronxTotalTrees = tl.getCountByBorough("bronx");
-				bronxPercent = ((double)bronxTotalSpecies/(double)bronxTotalTrees)*100;
-				brookTotalSpecies = tl.getCountByLatinNameBorough(userInput, "Brooklyn");
-				brookTotalTrees = tl.getCountByBorough("Brooklyn");
-				brookPercent = ((double)brookTotalSpecies/(double)brookTotalTrees)*100;
-				queensTotalSpecies = tl.getCountByLatinNameBorough(userInput, "Queens");
-				queensTotalTrees = tl.getCountByBorough("Queens");
-				queensPercent = ((double)queensTotalSpecies/(double)queensTotalTrees)*100;
-				statenTotalSpecies = tl.getCountByLatinNameBorough(userInput, "Staten Island");
-				statenTotalTrees = tl.getCountByBorough("Staten Island");
-				statenPercent = ((double)statenTotalSpecies/(double)statenTotalTrees)*100;
+			if(nycTotalLatin > 0){	
+				manTotalSpecies += tl.getCountByLatinNameBorough(userInput, "manhattan");
+				bronxTotalSpecies += tl.getCountByLatinNameBorough(userInput, "bronx");
+				brookTotalSpecies += tl.getCountByLatinNameBorough(userInput, "Brooklyn");
+				queensTotalSpecies += tl.getCountByLatinNameBorough(userInput, "Queens");
+				statenTotalSpecies += tl.getCountByLatinNameBorough(userInput, "Staten Island");
 			}
+			nycPercent = ((double)nycTotal/(double)nycTotalTrees)*100;
+			manPercent = ((double)manTotalSpecies/(double)manTotalTrees)*100;
+			bronxPercent = ((double)bronxTotalSpecies/(double)bronxTotalTrees)*100;
+			brookPercent = ((double)brookTotalSpecies/(double)brookTotalTrees)*100;
+			queensPercent = ((double)queensTotalSpecies/(double)queensTotalTrees)*100;
+			statenPercent = ((double)statenTotalSpecies/(double)statenTotalTrees)*100;
 			System.out.println("\nPopularity in the city: ");
-			System.out.printf("%-15s %,-5d  %1s %,d %s %.2f %s", "NYC: ", nycTotalCommon, "(", nycTotalTrees, ")", nycPercent, "%");
+			System.out.printf("%-15s %,-5d  %1s %,d %s %.2f %s", "NYC: ", nycTotal, "(", nycTotalTrees, ")", nycPercent, "%");
 			System.out.println("");
 			System.out.printf("%-15s %,-5d  %s %,d %s %.2f %s", "Manhattan: ", manTotalSpecies, "(", manTotalTrees, ")", manPercent, "%");
 			System.out.println("");

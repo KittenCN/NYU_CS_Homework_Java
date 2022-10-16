@@ -43,6 +43,9 @@ public class Tree implements Comparable<Tree> {
 		if(spc_latin==null){
 			throw new IllegalArgumentException("Spc_latin cannot be null");
 		}
+		else{
+			this.spc_latin = spc_latin;
+		}
 	}
 	public String getSpc_latin(){
 		return this.spc_latin;
@@ -78,6 +81,9 @@ public class Tree implements Comparable<Tree> {
 	public void setSpc_common(String spc_common) throws IllegalArgumentException{
 		if (spc_common == null){
 			throw new IllegalArgumentException("Spc_common cannot be null");
+		}
+		else{
+			this.spc_common = spc_common;
 		}
 	}
 	public String getSpc_common(){
