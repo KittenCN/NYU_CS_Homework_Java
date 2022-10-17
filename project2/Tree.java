@@ -28,6 +28,7 @@ public class Tree implements Comparable<Tree> {
 		this.setX_sp(x_sp);
 		this.setY_sp(y_sp);
 	}
+
 	public void setTreeID (int tree_id) throws IllegalArgumentException{
 		if (tree_id<0){
 			throw new IllegalArgumentException("Invalid tree tree_id");
@@ -36,9 +37,11 @@ public class Tree implements Comparable<Tree> {
 			this.tree_id = tree_id; 
 		}
 	}
+
 	public int getTreeID(){
 		return this.tree_id;
 	}
+
 	public void setSpc_latin(String spc_latin) throws IllegalArgumentException{
 		if(spc_latin==null){
 			throw new IllegalArgumentException("Spc_latin cannot be null");
@@ -47,9 +50,11 @@ public class Tree implements Comparable<Tree> {
 			this.spc_latin = spc_latin;
 		}
 	}
+
 	public String getSpc_latin(){
 		return this.spc_latin;
 	}
+
 	public void setStatus(String status) throws IllegalArgumentException{
 		if(status==null){
 			this.status=null;
@@ -61,9 +66,11 @@ public class Tree implements Comparable<Tree> {
 			throw new IllegalArgumentException("Tree status unidentified");
 		}
 	}
+
 	public String getStatus(){
 		return this.status;
 	}
+
 	public void setHealth (String health) throws IllegalArgumentException{
 		if(health==null){
 			this.health = null;
@@ -75,9 +82,11 @@ public class Tree implements Comparable<Tree> {
 			throw new IllegalArgumentException("Tree health unidentified");
 		}
 	}
+
 	public String getHealth(){
 		return this.health;
 	}
+
 	public void setSpc_common(String spc_common) throws IllegalArgumentException{
 		if (spc_common == null){
 			throw new IllegalArgumentException("Spc_common cannot be null");
@@ -86,9 +95,11 @@ public class Tree implements Comparable<Tree> {
 			this.spc_common = spc_common;
 		}
 	}
+
 	public String getSpc_common(){
 		return this.spc_common;
 	}
+
 	public void setZipcode(int Zipcode) throws IllegalArgumentException{
 		if (Zipcode<0 ||Zipcode>99999){
 			throw new IllegalArgumentException("Invalid zipcode, tree not registered");
@@ -97,9 +108,11 @@ public class Tree implements Comparable<Tree> {
 			this.zipcode = Zipcode;
 		}
 	}
+
 	public int getZipcode(){
 		return this.zipcode;
 	}
+
 	public void setBoroname (String boroname) throws IllegalArgumentException{
 		if (boroname.equalsIgnoreCase("Manhattan")||boroname.equalsIgnoreCase("Bronx")||boroname.equalsIgnoreCase("Brooklyn")||boroname.equalsIgnoreCase("Queens")||boroname.equalsIgnoreCase("Staten Island")){
 			this.boroname = boroname;
@@ -108,18 +121,23 @@ public class Tree implements Comparable<Tree> {
 			throw new IllegalArgumentException("Invalid borough name");
 		}
 	}
+
 	public String getBoroname(){
 		return this.boroname;
 	}
+
 	public void setX_sp(double x_sp){
 		this.x_sp = x_sp;
 	}
+
 	public double getX_sp(){
 		return this.x_sp;
 	}
+
 	public void setY_sp(double y_sp){
 		this.y_sp = y_sp;
 	}
+	
 	public double getY_sp(){
 		return this.y_sp;
 	}

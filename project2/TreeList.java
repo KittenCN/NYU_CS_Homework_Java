@@ -13,20 +13,25 @@ public class TreeList{
 			this.right = null;
 		}
 	}
+
 	Node root;
 	ArrayList<Node> nodes;
+
 	public TreeList(){
 		this.root = null;
 		this.nodes = new ArrayList<Node>();
 	}
+
 	public void add(Tree tree){
 		Node node = new Node(tree);
+
 		if (this.root==null){
 			this.root = node;
 			this.nodes.add(node);
 		}
 		else{
 			Node current = this.root;
+
 			while(true){
 				if (node.tree.getTreeID()<current.tree.getTreeID()){
 					if (current.left==null){
@@ -51,56 +56,74 @@ public class TreeList{
 			}
 		}
 	}
+
 	public int getTotalNumberOfTrees(){
 		return this.nodes.size();
 	}
-	public int getCountByCommonName(String SpeciesName){
+
+	public int getCountByCommonName(String speciesName){
 		int count = 0;
+
 		for (int i=0; i<this.nodes.size();i++){
-			if(this.nodes.get(i).tree.getSpc_common().toLowerCase().contains(SpeciesName.toLowerCase())){
+			if(this.nodes.get(i).tree.getSpc_common().toLowerCase().contains(speciesName.toLowerCase())){
 				count++;
 			}
 		}
+
 		return count;
 	}
-	public int getCountByLatinName(String SpeciesName){
+
+	public int getCountByLatinName(String speciesName){
 		int count = 0;
+
 		for (int i=0; i<this.nodes.size();i++){
-			if(this.nodes.get(i).tree.getSpc_latin().toLowerCase().contains(SpeciesName.toLowerCase())){
+			if(this.nodes.get(i).tree.getSpc_latin().toLowerCase().contains(speciesName.toLowerCase())){
 				count++;
 			}
 		}
+
 		return count;
 	}
-	public int getCountByBorough(String BoroughName){
+
+	public int getCountByBorough(String boroughName){
 		int count = 0;
+
 		for (int i=0; i<this.nodes.size();i++){
-			if (this.nodes.get(i).tree.getBoroname().toLowerCase().equalsIgnoreCase(BoroughName.toLowerCase())){
+			if (this.nodes.get(i).tree.getBoroname().toLowerCase().equalsIgnoreCase(boroughName.toLowerCase())){
 				count++;
 			}
 		}
+
 		return count;
 	}
-	public int getCountByCommonNameBorough(String SpeciesName, String BoroughName){
+
+	public int getCountByCommonNameBorough(String speciesName, String boroughName){
 		int count = 0;
+
 		for (int i=0; i<this.nodes.size();i++){
-			if(this.nodes.get(i).tree.getSpc_common().toLowerCase().contains(SpeciesName.toLowerCase()) && this.nodes.get(i).tree.getBoroname().toLowerCase().equalsIgnoreCase(BoroughName.toLowerCase())){
+			if(this.nodes.get(i).tree.getSpc_common().toLowerCase().contains(speciesName.toLowerCase()) && this.nodes.get(i).tree.getBoroname().toLowerCase().equalsIgnoreCase(boroughName.toLowerCase())){
 				count++;
 			}
 		}
+		
 		return count;
 	}
-	public int getCountByLatinNameBorough(String SpeciesName, String BoroughName){
+
+	public int getCountByLatinNameBorough(String speciesName, String boroughName){
 		int count = 0;
+
 		for (int i=0; i<this.nodes.size();i++){
-			if(this.nodes.get(i).tree.getSpc_latin().toLowerCase().contains(SpeciesName.toLowerCase()) && this.nodes.get(i).tree.getBoroname().toLowerCase().equalsIgnoreCase(BoroughName.toLowerCase())){
+			if(this.nodes.get(i).tree.getSpc_latin().toLowerCase().contains(speciesName.toLowerCase()) && this.nodes.get(i).tree.getBoroname().toLowerCase().equalsIgnoreCase(boroughName.toLowerCase())){
 				count++;
 			}
 		}
+
 		return count;
 	}
+
 	public ArrayList<String> getMatchingCommon(String commonName){
 		ArrayList<String> matchList = new ArrayList<String>();
+
 		for (int i =0;i<this.nodes.size();i++){
 			String thisSpc = this.nodes.get(i).tree.getSpc_common();
 			if(thisSpc != null){
@@ -112,6 +135,7 @@ public class TreeList{
 				}
 			}
 		}
+
 		if(matchList.size()==0){
 			return null;
 		}
@@ -119,8 +143,10 @@ public class TreeList{
 			return matchList;
 		}
 	}
+
 	public ArrayList<String> getMatchingLatin(String latinName){
 		ArrayList<String> matchList = new ArrayList<String>();
+
 		for (int i =0;i<this.nodes.size();i++){
 			String thisSpc = this.nodes.get(i).tree.getSpc_latin();
 			if(thisSpc != null){
@@ -132,6 +158,7 @@ public class TreeList{
 				}
 			}
 		}
+
 		if(matchList.size()==0){
 			return null;
 		}
@@ -139,12 +166,15 @@ public class TreeList{
 			return matchList;
 		}
 	}
+
 	@Override
 	public String toString(){
 		String output = "";
+
 		for (int i=0; i<this.nodes.size();i++){
 			output += this.nodes.get(i).tree.toString() + " ";
 		}
+
 		return output;
 	}
 }
