@@ -29,7 +29,7 @@ public class MountainClimb {
                     }
                 }
                 RestStop restStop = new RestStop(strListIn[0], alStrSupplies, alStrObstacles);
-                bstMountain.addNode(restStop);
+                bstMountain.add(restStop);
             }
         }
         catch (FileNotFoundException e){
