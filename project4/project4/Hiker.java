@@ -1,67 +1,46 @@
 package project4;
 
-import java.util.*;
+public class Hiker{
+    private int food;
+    private int raft;
+    private int axe;  
+    private boolean isAlive;
 
-public class Hiker {
-    private int intFood;
-    private int intRafts;
-    private int intAxes;
-
-    public Hiker(){
-        this.intFood = 0;
-        this.intRafts = 0;
-        this.intAxes = 0;
+    public Hiker(boolean isAlive) {
+        this.isAlive = isAlive;
     }
 
-    public Hiker(Hiker hikerModel){
-        this.intFood = hikerModel.intFood;
-        this.intAxes = hikerModel.intAxes;
-        this.intRafts = hikerModel.intRafts;
+    public int getFood() {
+        return food;
     }
 
-    public boolean processRestStop(RestStop restStop){
-        if (restStop == null){
-            return false;
-        }
-        ArrayList<String> alStrSupplies = restStop.alStrGetSupplies();
-        for (int i = 0; i < alStrSupplies.size(); i++){
-            String strSupply = alStrSupplies.get(i);
-            if (strSupply.equals("food")){
-                this.intFood++;
-            }
-            else if (strSupply.equals("raft")){
-                this.intRafts++;
-            }
-            else if (strSupply.equals("axe")){
-                this.intAxes++;
-            }
-        }
-        ArrayList<String> alStrObstacles = restStop.alStrGetObstaclies();
-        for (int i = 0; i < alStrObstacles.size(); i++){
-            String strObstacle = alStrObstacles.get(i);
-            if (strObstacle.equals("river")){
-                if (this.intRafts > 0){
-                    this.intRafts--;
-                }
-                else {
-                    return false;
-                }
-            }
-            else if (strObstacle.equals("fallen tree")){
-                if (this.intAxes > 0){
-                    this.intAxes--;
-                }
-                else {
-                    return false;
-                }
-            }
-        }
-        this.intFood--;
-        if (intFood < 0){
-            return false;
-        }
-        else{
-            return true;
-        }
+    public void setFood(int food) {
+        this.food = food;
     }
+
+    public int getRaft() {
+        return raft;
+    }
+
+    public void setRaft(int raft) {
+        this.raft = raft;
+    }
+
+    public int getAxe() {
+        return axe;
+    }
+
+    public void setAxe(int axe) {
+        this.axe = axe;
+    }
+
+    public boolean isAlive() {
+        return isAlive;
+    }
+
+    public void setAlive(boolean alive) {
+        isAlive = alive;
+    }
+
+
 }

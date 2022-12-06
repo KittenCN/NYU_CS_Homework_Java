@@ -1,47 +1,101 @@
 package project4;
 
-import java.util.*;
+import java.util.Objects;
 
-public class RestStop implements Comparable<RestStop>{
-    private String strLabel;
-    private ArrayList<String> alStrSupplies;
-    private ArrayList<String> alStrObstacles;
+public class RestStop  implements Comparable  {
+    private char  element;  
+    private int food;
+    private int fallenTree;
+    private int river;
+    private int raft; 
+    private int axe;  
 
-    public RestStop (String strLabel, ArrayList<String> alStrSupplies, ArrayList<String> alStrObstacles){
-        this.strLabel = strLabel;
-        this.alStrSupplies = alStrSupplies;
-        this.alStrObstacles = alStrObstacles;
+    public char getElement() {
+        return element;
     }
 
-    public String strGetLabel(){
-        return strLabel;
+    public void setElement(char element) {
+        this.element = element;
     }
 
-    public ArrayList<String> alStrGetSupplies(){
-        return alStrSupplies;
+    public int getFood() {
+        return food;
     }
 
-    public ArrayList<String> alStrGetObstaclies(){
-        return alStrObstacles;
+    public void setFood(int food) {
+        this.food = food;
+    }
+
+    public int getFallenTree() {
+        return fallenTree;
+    }
+
+    public void setFallenTree(int fallenTree) {
+        this.fallenTree = fallenTree;
+    }
+
+    public int getRiver() {
+        return river;
+    }
+
+    public void setRiver(int river) {
+        this.river = river;
+    }
+
+    public int getRaft() {
+        return raft;
+    }
+
+    public void setRaft(int raft) {
+        this.raft = raft;
+    }
+
+    public int getAxe() {
+        return axe;
+    }
+
+    public void setAxe(int axe) {
+        this.axe = axe;
+    }
+
+    public RestStop(char element, int food, int fallenTree, int river, int raft, int axe) {
+        this.element = element;
+        this.food = food;
+        this.fallenTree = fallenTree;
+        this.river = river;
+        this.raft = raft;
+        this.axe = axe;
     }
 
     @Override
-    public String toString(){
-        StringBuilder sb = new StringBuilder(this.strLabel);
-        for(int i = 0; i < alStrSupplies.size(); i++){
-            sb.append(" ");
-            sb.append(alStrSupplies.get(i));
-        }
-        for(int i = 0; i < alStrObstacles.size(); i++){
-            sb.append(" ");
-            sb.append(alStrObstacles.get(i));
-        }
-        return sb.toString();
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RestStop restStop = (RestStop) o;
+        return element == restStop.element;
     }
 
     @Override
-    public int compareTo(RestStop rs) {
-        String strLabel = rs.strGetLabel();
-        return this.strLabel.compareTo(strLabel);
+    public int hashCode() {
+        return Objects.hash(element);
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        RestStop restStop = (RestStop) o;
+        return element-restStop.element;
+    }
+
+    @Override
+    public String toString() {
+        return element + "";
+        // return "{" +
+        //         "label=" + element +
+        //         ", food=" + food +
+        //         ", raft=" + raft +
+        //         ", axe=" + axe +
+        //         ", fallenTree=" + fallenTree +
+        //         ", river=" + river +
+        //         '}';
     }
 }
