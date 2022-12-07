@@ -1,5 +1,12 @@
 package project4;
 
+/**
+ * The BinaryTreeInfo builds the interface of a binary tree. 
+ * 
+ * @author QiuanYu
+ *
+ */
+
 public interface BinaryTreeInfo {
 
 	Object root();

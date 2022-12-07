@@ -1,8 +1,14 @@
 package project4;
 
+/**
+ * The binary tree class builds the basic logic of a binary tree. 
+ * 
+ * @author QiuanYu
+ *
+ */
+
 import java.util.LinkedList;
 import java.util.Queue;
-
 
 public class BinaryTree<E> implements BinaryTreeInfo {
 	protected int size;

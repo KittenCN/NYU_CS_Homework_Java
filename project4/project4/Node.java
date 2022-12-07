@@ -1,5 +1,12 @@
 package project4;
 
+/**
+ * The Node class nodes for noding the binary tree.
+ * 
+ * @author QiuanYu
+ *
+ */
+
 public class Node<E> {
     E element;
     Node<E> left;

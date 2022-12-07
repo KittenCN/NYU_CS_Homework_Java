@@ -1,5 +1,12 @@
 package project4;
 
+/**
+ * The Hiker class builds the logic of a hiker that represent a hiker traveling down the mountain.
+ * 
+ * @author QiuanYu
+ *
+ */
+
 public class Hiker{
     private int food;
     private int raft;

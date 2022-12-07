@@ -1,5 +1,12 @@
 package project4;
 
+/**
+ * The Printer class builds the basic logic of a printer.
+ * 
+ * @author QiuanYu
+ *
+ */
+
 public abstract class Printer {
 	protected BinaryTreeInfo tree;
 	public Printer(BinaryTreeInfo tree) {

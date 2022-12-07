@@ -1,5 +1,12 @@
 package project4;
 
+/**
+ * The Strings class represent a single rest stop
+ * 
+ * @author QiuanYu
+ *
+ */
+
 import java.util.Objects;
 
 public class RestStop  implements Comparable  {

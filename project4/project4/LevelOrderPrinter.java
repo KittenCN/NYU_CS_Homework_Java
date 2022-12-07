@@ -1,5 +1,12 @@
 package project4;
 
+/**
+ * The LevelOrderPrinter class builds the logic of printing a binary tree in level order. 
+ * 
+ * @author QiuanYu
+ *
+ */
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;

@@ -1,5 +1,12 @@
 package project4;
 
+/**
+ * The Strings class builds the logic of formatting string.
+ * 
+ * @author QiuanYu
+ *
+ */
+
 public class Strings {
 	public static String repeat(String string, int count) {
 		if (string == null) return null;

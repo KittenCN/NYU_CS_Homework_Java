@@ -1,7 +1,13 @@
 package project4;
 
-import java.util.*;
+/**
+ * The BST class builds all the binary tree run logic required by the question. 
+ * 
+ * @author QiuanYu
+ *
+ */
 
+import java.util.*;
 
 public class BST<E> extends BinaryTree<E> {
 	private Comparator<E> comparator;

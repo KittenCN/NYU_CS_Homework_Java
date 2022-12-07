@@ -1,11 +1,16 @@
 package project4;
 
+/**
+ * The BSTMountain class builds the logic of the mountain that inherits from BST<RestStop>.
+ * 
+ * @author QiuanYu
+ *
+ */
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class BSTMountain extends BST<RestStop>{
-
-
 
     public List<String> binaryTreePaths(Node root) {
         List<String> paths = new ArrayList<String>();

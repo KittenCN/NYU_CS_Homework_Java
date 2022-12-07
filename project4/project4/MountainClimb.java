@@ -1,5 +1,11 @@
 package project4;
 
+/**
+* The MountainClimb class builds the main class.
+ * 
+ * @author QiuanYu
+ *
+ */
 
 import java.io.File;
 import java.io.FileNotFoundException;
