@@ -20,7 +20,7 @@ public class MountainClimb {
         // args[0] = "D:\\workstation\\GitHub\\NYU_CS_Homework_Java\\project4\\project4\\inputs.txt";
         Scanner scan = new Scanner(new File(args[0]));
         BSTMountain bst = build(scan);
-        System.out.println(bst.toStringTreeFormat());
+        // System.out.println(bst.toStringTreeFormat());
         List<String> strings = bst.binaryTreePaths(bst.root);
         // System.out.println(strings);
         for(String str:strings){

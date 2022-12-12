@@ -1,0 +1,195 @@
+Provide definition in your own words and examples (on paper or code) to the following concepts:
+1. Inheritance (provide a programming example)
+	public class Animal { 
+		private String name;  
+		private int id; 
+		public Animal(String myName, int myid) { 
+			name = myName; 
+			id = myid;
+		} 
+		public void eat(){ 
+			System.out.println(name+"is eatting"); 
+		}
+		public void sleep(){
+			System.out.println(name+"is sleeping");
+		}
+	}
+	public class Penguin extends Animal { 
+		public Penguin(String myName, int myid) { 
+			super(myName, myid); 
+		} 
+	}
+
+2. Inheritance and using the super for a constructor (provide a programming example)
+	public class Animal { 
+		private String name;  
+		private int id; 
+		public Animal(String myName, int myid) { 
+			name = myName; 
+			id = myid;
+		} 
+		public void eat(){ 
+			System.out.println(name+"is eatting"); 
+		}
+		public void sleep(){
+			System.out.println(name+"is sleeping");
+		}
+	}
+	public class Mouse extends Animal { 
+		public Mouse(String myName, int myid) { 
+			super(myName, myid); 
+		} 
+	}
+	
+3. Interfaces (provide a programming example)
+	interface Animal {
+	   public void eat();
+	   public void travel();
+	}
+	public class MammalInt implements Animal{
+	   public void eat(){
+		  System.out.println("Mammal eats");
+	   }
+	   public void travel(){
+		  System.out.println("Mammal travels");
+	   } 
+	   public int noOfLegs(){
+		  return 0;
+	   }
+	   public static void main(String args[]){
+		  MammalInt m = new MammalInt();
+		  m.eat();
+		  m.travel();
+	   }
+	}
+	
+4. Abstract classes (provide a programming example)
+	public abstract class Employee
+	{
+	   private String name;
+	   private String address;
+	   private int number;
+	   public Employee(String name, String address, int number)
+	   {
+		  System.out.println("Constructing an Employee");
+		  this.name = name;
+		  this.address = address;
+		  this.number = number;
+	   }
+	   public String getName()
+	   {
+		  return name;
+	   }
+	   public String getAddress()
+	   {
+		  return address;
+	   }
+	   public void setAddress(String newAddress)
+	   {
+		  address = newAddress;
+	   }
+	   public int getNumber()
+	   {
+		 return number;
+	   }
+	}
+
+5. Declared type
+	The declared type of a variable is the type that is used in the declaration.
+
+6. Actual type
+	The actual type is the class that actually creates the object.
+
+7. How does the compiler decide on which methods to execute depending on the declared type and actual type? (Refer to the notes examples)
+	Declared type is used at compile time and actual type is used at run time. If the compile time type and run-time type are inconsistent, polymorphism will occur.
+
+8. Polymorphism (provide a programming example)
+	class Shape {
+		void draw() {}
+	} 
+	class Circle extends Shape {
+		void draw() {
+			System.out.println("Circle.draw()");
+		}
+	} 
+	class Square extends Shape {
+		void draw() {
+			System.out.println("Square.draw()");
+		}
+	}
+	class Triangle extends Shape {
+		void draw() {
+			System.out.println("Triangle.draw()");
+		}
+	}
+
+9. Method overloading (provide a programming example)
+	public class Overloading {
+		public int test(){
+			System.out.println("test1");
+			return 1;
+		}
+		public void test(int a){
+			System.out.println("test2");
+		}   
+		public String test(int a,String s){
+			System.out.println("test3");
+			return "returntest3";
+		}   
+		public String test(String s,int a){
+			System.out.println("test4");
+			return "returntest4";
+		}   
+		public static void main(String[] args){
+			Overloading o = new Overloading();
+			System.out.println(o.test());
+			o.test(1);
+			System.out.println(o.test(1,"test3"));
+			System.out.println(o.test("test4",1));
+		}
+	}
+
+10. Method overriding (provide a programming example)
+	class Animal{
+	   public void move(){
+		  System.out.println("Animal can move.");
+	   }
+	}
+	 
+	class Dog extends Animal{
+	   public void move(){
+		  System.out.println("Dog can run.");
+	   }
+	}
+	 
+	public class TestDog{
+	   public static void main(String args[]){
+		  Animal a = new Animal();
+		  Animal b = new Dog();
+		  a.move();
+		  b.move();
+	   }
+	}
+
+Research the following Questions and answer in your own words:
+1. Does Java allow multiple inheritance? And why or why not?
+	Java don't allow multiple inheritance.
+	Two classes are derived from a base class, and then a new class is defined, and multiple inheritance from the two classes will lead to conflict.
+
+2. Are there any other programming languages that support multiple inheritance?
+	C#.
+
+3. Can a class implement multiple interfaces? (If yes, then provide an example with java code)
+	yes.
+	public class SpbmServiceImpl extends BasicServiceImpl implements ISpbmService,ISpbmDao{
+	}
+
+4. Define OOP in your own words and provide the benefits of OOP
+	OOP regards the computer program as a set of objects, and each object can receive and process the messages sent by other objects. The execution of the computer program is a series of messages passed 	between various objects.
+
+5. Is the C language an OOP language?
+	No.
+
+6. What is the difference between Object Oriented Programing and Procedural Programming?
+	Process oriented is to analyze the steps needed to solve the problem, and then use functions to realize these steps step by step. When using them, you can call them one by one.
+	Object oriented is to decompose a problem into various objects. The purpose of building objects is not to complete one step, but to describe the behavior of a thing in the whole step of solving the problem.
