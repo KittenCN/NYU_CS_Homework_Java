@@ -3,7 +3,19 @@ package project5.Ferry;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
+/**
+ * 
+ * Input: The first line of input contains three integers N, T and M (1 <= N, T, M <= 10,000). Each of the following
+ * M lines gives the arrival time of a car and the bank at which the car arrives (left or right). The cars are ordered
+ * by their arrival times (so the arrival times are non-decreasing) and the time spent on loading and unloading can be
+ * ignored.
+ * Output: For each car, you should print one line containing one number, the time at which the car is unloaded at the
+ * opposite bank.
+ *
+ * @author Joanna Klukowska
+ * @author Jerry Yu
+ *
+ */
 public class Ferry {
     private static class Car {
         public int time;

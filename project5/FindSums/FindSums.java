@@ -4,6 +4,23 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
+/**
+ * 
+ * Input: The first line of the input contains two integers S (1 <= S <= 1,000) and N (1 <= N <= 12), indicating the target
+ * sum and the number of values in the multiset, respectively.
+ * The second line contains N integers, all of which are between 1 and 100 - these are the elements of the multiset.
+ * Output: First, print a line Sums of S: where S is the value given in the input. Then print one line for every subset satisfying
+ * the condition or a line containing NONE if there is no such subset.
+ * For every subset, numbers are printed in decreasing order and separated by a plus sign (+). The subsets themselves
+ * are sorted lexicographically in decreasing order, i.e. they are sorted by their first integer, then the second integer in
+ * case of tie, and so on. Additionally, the subsets you print should not contain repetitions (i.e., you should never print
+ * two lines that are identical).
+ *
+ * @author Joanna Klukowska
+ * @author Jerry Yu
+ *
+ */
+
 public class FindSums {
     static int S, N, sum;
     static int[] set;

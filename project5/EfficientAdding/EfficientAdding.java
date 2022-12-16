@@ -1,6 +1,17 @@
 package project5.EfficientAdding;
 import java.util.PriorityQueue;
 import java.util.Scanner;
+/**
+ * 
+ * Input: The first line of input contains a positive number N (2 <= N <= 5000) that tells you how many numbers there are
+ * to add.
+ * The second line of input contains those N numbers 0 <= n_1, n_2, ..., n_N <= 100,000.
+ * Output: The minimum total cost of addition followed by a newline.
+ *
+ * @author Joanna Klukowska
+ * @author Jerry Yu
+ *
+ */
 public class EfficientAdding {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
