@@ -1,15 +1,14 @@
 import java.util.*;
 
-public class Main{
+public class test{
     public static void main(String[] args){
         show(new cat());
-        // show(new dog());
-        // show(new Animal());
+        show(new dog());
 
-        // Animal a = new dog();
-        // a.eat();
-        // cat c = (cat)a;
-        // c.eat();
+        Animal a = new dog();
+        a.eat();
+        cat c = (cat)a;
+        c.eat();
     }
     public static void show(Animal ani){
         ani.eat();
