@@ -6,52 +6,87 @@
     "configurations": [
         {
             "type": "java",
+            "name": "poems",
+            "request": "launch",
+            "mainClass": "temp.poems",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "poems",
+            "request": "launch",
+            "mainClass": "poems",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "teach",
+            "request": "launch",
+            "mainClass": "teach",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "teach",
+            "request": "launch",
+            "mainClass": "temp.teach",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Teacher",
+            "request": "launch",
+            "mainClass": "temp.Teacher",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "temp.Main",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Factorial",
+            "request": "launch",
+            "mainClass": "Factorial",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "practice221",
+            "request": "launch",
+            "mainClass": "practice221",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "test1",
+            "request": "launch",
+            "mainClass": "test1",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Quiz1",
+            "request": "launch",
+            "mainClass": "Quiz1",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "Main",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
             "name": "test",
             "request": "launch",
             "mainClass": "test",
             "projectName": ""
-        },
-        {
-            "type": "java",
-            "name": "tonjirenshu",
-            "request": "launch",
-            "mainClass": "tonjirenshu",
-            "projectName": ""
-        },
-        {
-            "type": "java",
-            "name": "Launch Main",
-            "request": "launch",
-            "mainClass": "Main",
-            "projectName": ""
-        },
-        {
-            "type": "java",
-            "name": "Launch SplitNegativePositive",
-            "request": "launch",
-            "mainClass": "SplitNegativePositive",
-            "projectName": ""
-        },
-        {
-            "type": "java",
-            "name": "Launch Driver_B",
-            "request": "launch",
-            "mainClass": "Final_Exam.Driver_B",
-            "projectName": ""
-        },
-        {
-            "type": "java",
-            "name": "Launch Driver_B",
-            "request": "launch",
-            "mainClass": "Driver_B",
-            "projectName": ""
-        },
-        {
-            "type": "java",
-            "name": "Launch Main",
-            "request": "launch",
-            "mainClass": "Main",
-            "projectName": "Main"
         }
     ]
 }
