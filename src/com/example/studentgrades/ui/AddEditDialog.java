@@ -23,29 +23,61 @@ public class AddEditDialog extends JDialog {
         gbc.insets=new Insets(5,5,5,5);
         gbc.anchor=GridBagConstraints.WEST;
 
-        gbc.gridx=0; gbc.gridy=0; p.add(new JLabel("学号:"),gbc);
-        tfId=new JTextField(15); gbc.gridx=1; p.add(tfId,gbc);
+        gbc.gridx=0; 
+        gbc.gridy=0; 
+        p.add(new JLabel("学号:"),gbc);
+        tfId=new JTextField(15); 
+        gbc.gridx=1; 
+        p.add(tfId,gbc);
 
-        gbc.gridx=0; gbc.gridy=1; p.add(new JLabel("姓名:"),gbc);
-        tfName=new JTextField(15); gbc.gridx=1; p.add(tfName,gbc);
+        gbc.gridx=0; 
+        gbc.gridy=1; 
+        p.add(new JLabel("姓名:"),gbc);
+        tfName=new JTextField(15); 
+        gbc.gridx=1; 
+        p.add(tfName,gbc);
 
-        gbc.gridx=0; gbc.gridy=2; p.add(new JLabel("班级:"),gbc);
-        tfClass=new JTextField(15); gbc.gridx=1; p.add(tfClass,gbc);
+        gbc.gridx=0; 
+        gbc.gridy=2; 
+        p.add(new JLabel("班级:"),gbc);
+        tfClass=new JTextField(15); 
+        gbc.gridx=1; 
+        p.add(tfClass,gbc);
 
-        gbc.gridx=0; gbc.gridy=3; p.add(new JLabel("分1:"),gbc);
-        tf1=new JTextField(5); gbc.gridx=1; p.add(tf1,gbc);
+        gbc.gridx=0; 
+        gbc.gridy=3; 
+        p.add(new JLabel("分1:"),gbc);
+        tf1=new JTextField(5); 
+        gbc.gridx=1; 
+        p.add(tf1,gbc);
 
-        gbc.gridx=0; gbc.gridy=4; p.add(new JLabel("分2:"),gbc);
-        tf2=new JTextField(5); gbc.gridx=1; p.add(tf2,gbc);
+        gbc.gridx=0; 
+        gbc.gridy=4; 
+        p.add(new JLabel("分2:"),gbc);
+        tf2=new JTextField(5); 
+        gbc.gridx=1; 
+        p.add(tf2,gbc);
 
-        gbc.gridx=0; gbc.gridy=5; p.add(new JLabel("分3:"),gbc);
-        tf3=new JTextField(5); gbc.gridx=1; p.add(tf3,gbc);
+        gbc.gridx=0; 
+        gbc.gridy=5; 
+        p.add(new JLabel("分3:"),gbc);
+        tf3=new JTextField(5); 
+        gbc.gridx=1; 
+        p.add(tf3,gbc);
 
-        gbc.gridx=0; gbc.gridy=6; p.add(new JLabel("分4:"),gbc);
-        tf4=new JTextField(5); gbc.gridx=1; p.add(tf4,gbc);
+        gbc.gridx=0; 
+        gbc.gridy=6; 
+        p.add(new JLabel("分4:"),gbc);
+        tf4=new JTextField(5); 
+        gbc.gridx=1; 
+        p.add(tf4,gbc);
 
-        gbc.gridx=0; gbc.gridy=7; p.add(new JLabel("分5:"),gbc);
-        tf5=new JTextField(5); gbc.gridx=1; p.add(tf5,gbc);
+        gbc.gridx=0; 
+        gbc.gridy=7; 
+        p.add(new JLabel("分5:"),gbc);
+        tf5=new JTextField(5); 
+        gbc.gridx=1; 
+        p.add(tf5,gbc);
 
         if(s!=null){
             tfId.setText(s.getId()); tfId.setEditable(false);
