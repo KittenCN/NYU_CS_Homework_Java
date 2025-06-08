@@ -1,3 +1,13 @@
 {
-    "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx16G -Xms100m -Xlog:jni+resolve=off"
+    "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx16G -Xms100m -Xlog:jni+resolve=off",
+    "java.project.sourcePaths": [
+        ".",
+        "Lab 2 Bullet-Proof Programs or InputValidation",
+        "pixLab\\classes",
+        "project4",
+        "src"
+    ],
+    "java.project.referencedLibraries": [
+        "lib\\mysql-connector-j-9.3.0.jar"
+    ]
 }

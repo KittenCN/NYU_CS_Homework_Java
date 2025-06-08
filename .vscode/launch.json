@@ -6,6 +6,41 @@
     "configurations": [
         {
             "type": "java",
+            "name": "LoginFrame",
+            "request": "launch",
+            "mainClass": "com.example.studentgrades.ui.LoginFrame",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "LoginFrame",
+            "request": "launch",
+            "mainClass": "STUM.LoginFrame",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "login",
+            "request": "launch",
+            "mainClass": "login",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "ToDoListApp",
+            "request": "launch",
+            "mainClass": "ToDoListApp",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
+            "name": "temp",
+            "request": "launch",
+            "mainClass": "temp.temp",
+            "projectName": "NYU_CS_Homework_Java_c63181be"
+        },
+        {
+            "type": "java",
             "name": "poems",
             "request": "launch",
             "mainClass": "temp.poems",

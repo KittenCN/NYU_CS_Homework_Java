@@ -1,39 +1,32 @@
 package temp;
+import java.lang.reflect.Array;
 import java.util.*;
  
 public class temp1 {
-    static long position = -1;
-    public static void split(long left, long right, long target, long[] array) {
-        long middlePos = (left + right) / 2;
-        long middleValue = array[(int) middlePos];
-        if(left > right) {
-            return;
-        }
-        if(middleValue == target) {
-            position = middlePos;
-        }
-        else if(middleValue > target) {
-            split(left, middlePos - 1,target,array);
-        }
-        else {
-            split(middlePos + 1,right,target,array);
+    public static void tickets(){
+        ArrayList<Object> tickets = new ArrayList<>();
+        tickets.add(0101);
+        tickets.add("Andrew");
+        tickets.add(0203);
+        tickets.add("Rufus");
+        tickets.add(0710);
+        tickets.add("Sally");
+
+        for(int i = 1; i < tickets.size(); i += 2){
+            System.out.println("Ticket Number: " + tickets.get(i-1) + ", Name: " + tickets.get(i));
         }
     }
-    public static void main(String[] args) {
-        Scanner sa = new Scanner(System.in);
-        long n = sa.nextLong();
-        long k = sa.nextLong();
-        long[] array = new long[(int) n];
-        for(long i = 0; i < n; i++) {
-            array[(int) i] = sa.nextLong();
+
+    public static void ticketsTo2DArray(ArrayList<Object> tickets){
+        String[][] TIX = new String[7][10];
+        for(int i = 0; i < tickets.size(); i += 2){
+            int number = (int) tickets.get(i);
+            String name = (String) tickets.get(i + 1);
+
+            int row = number / 100 - 1;
+            int col = number % 100 - 1;
+            TIX[row][col] = name;
         }
-        split(0, n - 1, k, array);
-        if(position == -1) {
-            System.out.print(position);
-        }
-        else {
-            System.out.print(position + 1);
-        }
-        sa.close();
+
     }
 }
