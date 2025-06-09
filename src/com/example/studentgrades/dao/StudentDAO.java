@@ -106,4 +106,27 @@ public class StudentDAO {
             0, 0, 0, 0, 0  // 成绩稍后填充
         );
     }
+
+    /** 根据姓名模糊查询学生 */
+    public List<Student> searchByName(String name) throws SQLException {
+        String sql = "SELECT * FROM student WHERE name LIKE ?";
+        List<Student> list = new ArrayList<>();
+        try (Connection conn = DatabaseManager.getConnection();
+                PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, "%" + name + "%");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Student s = mapStudent(rs);
+                double[] scores = scoreDAO.findScoresByStudent(s.getId());
+                s.setScore1(scores[0]);
+                s.setScore2(scores[1]);
+                s.setScore3(scores[2]);
+                s.setScore4(scores[3]);
+                s.setScore5(scores[4]);
+                list.add(s);
+            }
+        }
+        return list;
+    }
+
 }

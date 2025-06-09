@@ -20,11 +20,14 @@ public class StudentPanel extends JPanel {
     public StudentPanel(){
         setLayout(new BorderLayout());
         JPanel top=new JPanel();
-        JButton bAdd=new JButton("新增"), bEdit=new JButton("编辑"), bDel=new JButton("删除"), bRefresh=new JButton("刷新");
+        JButton bAdd=new JButton("新增"), bEdit=new JButton("编辑"), bDel=new JButton("删除"), bRefresh=new JButton("刷新"), bSearch=new JButton("搜索");
+        JTextField tfSearch = new JTextField(10);
         top.add(bAdd); 
         top.add(bEdit); 
         top.add(bDel); 
         top.add(bRefresh);
+        top.add(tfSearch); // 搜索框
+        top.add(bSearch); // 搜索按钮
         add(top,BorderLayout.NORTH);
 
         model=new DefaultTableModel(new String[]{"学号","姓名","班级","分1","分2","分3","分4","分5"},0){
@@ -48,6 +51,21 @@ public class StudentPanel extends JPanel {
                     logDAO.insert(new LogEntry(new Timestamp(System.currentTimeMillis()),"admin","删除学生",id));
                     loadData();
                 }catch(Exception ex){ex.printStackTrace();}
+            }
+        });
+        bSearch.addActionListener(e->{
+            String keyword = tfSearch.getText().trim(); // 直接使用搜索框引用
+            if(keyword.isEmpty()) {
+                loadData();
+            } else {
+                try {
+                    List<Student> list = dao.searchByName(keyword);
+                    model.setRowCount(0);
+                    for (Student s : list) {
+                        model.addRow(new Object[]{s.getId(), s.getName(), s.getClassName(),
+                                s.getScore1(), s.getScore2(), s.getScore3(), s.getScore4(), s.getScore5()});
+                    }
+                } catch (Exception ex) { ex.printStackTrace(); }
             }
         });
         loadData();
