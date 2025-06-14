@@ -29,8 +29,12 @@ public class StudentPanel extends JPanel {
         top.add(tfSearch); // 搜索框
         top.add(bSearch); // 搜索按钮
         add(top,BorderLayout.NORTH);
-
-        model=new DefaultTableModel(new String[]{"学号","姓名","班级","分1","分2","分3","分4","分5"},0){
+        String[] tmp = {"学号","姓名","班级"};
+        for(int i=1; i<=com.example.studentgrades.dao.Config.MAX_SUBJECT; i++){
+            tmp = java.util.Arrays.copyOf(tmp, tmp.length + 1);
+            tmp[tmp.length - 1] = "分" + i;
+        }
+        model=new DefaultTableModel(tmp,0){
             public boolean isCellEditable(int r,int c){return false;}
         };
         table=new JTable(model);
@@ -62,8 +66,15 @@ public class StudentPanel extends JPanel {
                     List<Student> list = dao.searchByName(keyword);
                     model.setRowCount(0);
                     for (Student s : list) {
-                        model.addRow(new Object[]{s.getId(), s.getName(), s.getClassName(),
-                                s.getScore1(), s.getScore2(), s.getScore3(), s.getScore4(), s.getScore5()});
+                        Object[] row = new Object[model.getColumnCount()];
+                        row[0] = s.getId();
+                        row[1] = s.getName();
+                        row[2] = s.getClassName();
+                        double[] scores = s.getScores();
+                        for (int i = 0; i < com.example.studentgrades.dao.Config.MAX_SUBJECT; i++) {
+                            row[3 + i] = scores[i];
+                        }
+                        model.addRow(row);
                     }
                 } catch (Exception ex) { ex.printStackTrace(); }
             }
@@ -76,8 +87,15 @@ public class StudentPanel extends JPanel {
             List<Student> list=dao.findAll();
             model.setRowCount(0);
             for(Student s:list){
-                model.addRow(new Object[]{s.getId(),s.getName(),s.getClassName(),
-                        s.getScore1(),s.getScore2(),s.getScore3(),s.getScore4(),s.getScore5()});
+                Object[] row=new Object[model.getColumnCount()];
+                row[0]=s.getId();
+                row[1]=s.getName();
+                row[2]=s.getClassName();
+                double[] scores=s.getScores();
+                for(int i=0;i<com.example.studentgrades.dao.Config.MAX_SUBJECT;i++){
+                    row[3+i]=scores[i];
+                }
+                model.addRow(row);
             }
         } catch(Exception ex){ex.printStackTrace();}
     }

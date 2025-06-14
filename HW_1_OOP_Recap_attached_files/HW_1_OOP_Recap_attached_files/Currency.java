@@ -1,4 +1,4 @@
-package HW_1_OOP_Recap_attached_files;
+package HW_1_OOP_Recap_attached_files
 public abstract class Currency {
     String Name;
 	String currencyName;

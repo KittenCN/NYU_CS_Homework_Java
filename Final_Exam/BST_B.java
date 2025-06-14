@@ -1,16 +1,9 @@
 package Final_Exam;
-import java.util.Scanner; 
-import java.util.Arrays;
 import java.util.ArrayList; 
 
 public class BST_B {
 
     private Node root;   //reference to the root node of the tree 
-    	
-	private boolean found;  //helper variable used by the remove methods
-    private boolean added;  //helper variable used by the add method 
-
-
 
     /**
 	 * Constructs a new, empty tree, sorted according to the natural ordering of its elements.

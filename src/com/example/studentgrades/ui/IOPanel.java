@@ -83,13 +83,13 @@ public class IOPanel extends JPanel {
                 try {
                     String[] parts = line.split(",");
                     if (parts.length < 8) { fail++; continue; }
+                    double[] scores = new double[com.example.studentgrades.dao.Config.MAX_SUBJECT];
+                    for (int i = 0; i < com.example.studentgrades.dao.Config.MAX_SUBJECT; i++) {
+                        scores[i] = Double.parseDouble(parts[3 + i].trim());
+                    }
                     Student s = new Student(
                             parts[0].trim(), parts[1].trim(), parts[2].trim(),
-                            Double.parseDouble(parts[3].trim()),
-                            Double.parseDouble(parts[4].trim()),
-                            Double.parseDouble(parts[5].trim()),
-                            Double.parseDouble(parts[6].trim()),
-                            Double.parseDouble(parts[7].trim())
+                            scores
                     );
                     dao.insert(s);
                     success++;
@@ -112,9 +112,12 @@ public class IOPanel extends JPanel {
             for (Student s : list) {
                 count++;
                 progress.setValue(count * 100 / total);
-                String line = String.join(",", s.getId(), s.getName(), s.getClassName(),
-                                         String.valueOf(s.getScore1()), String.valueOf(s.getScore2()),
-                                         String.valueOf(s.getScore3()), String.valueOf(s.getScore4()), String.valueOf(s.getScore5()));
+                double[] scores = s.getScores();
+                String strScore = "";
+                for (double score : scores) {
+                    strScore += score + ",";
+                }
+                String line = String.join(",", s.getId(), s.getName(), s.getClassName(), strScore.substring(0, strScore.length() - 1));
                 bw.write(line);
                 bw.newLine();
             }

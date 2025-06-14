@@ -1,12 +1,13 @@
 package com.example.studentgrades.ui;
 
 import com.example.studentgrades.model.Student;
-
+import com.example.studentgrades.dao.ScoreDAO;
 import javax.swing.*;
 import java.awt.*;
 
 public class AddEditDialog extends JDialog {
-    private JTextField tfId,tfName,tfClass,tf1,tf2,tf3,tf4,tf5;
+    private JTextField tfId,tfName,tfClass;
+    private JTextField[] tf = new JTextField[com.example.studentgrades.dao.Config.MAX_SUBJECT];
     boolean saved=false;
     private Student student;
 
@@ -44,50 +45,67 @@ public class AddEditDialog extends JDialog {
         gbc.gridx=1; 
         p.add(tfClass,gbc);
 
-        gbc.gridx=0; 
-        gbc.gridy=3; 
-        p.add(new JLabel("分1:"),gbc);
-        tf1=new JTextField(5); 
-        gbc.gridx=1; 
-        p.add(tf1,gbc);
+        // gbc.gridx=0; 
+        // gbc.gridy=3; 
+        // p.add(new JLabel("分1:"),gbc);
+        // tf1=new JTextField(5); 
+        // gbc.gridx=1; 
+        // p.add(tf1,gbc);
 
-        gbc.gridx=0; 
-        gbc.gridy=4; 
-        p.add(new JLabel("分2:"),gbc);
-        tf2=new JTextField(5); 
-        gbc.gridx=1; 
-        p.add(tf2,gbc);
+        // gbc.gridx=0; 
+        // gbc.gridy=4; 
+        // p.add(new JLabel("分2:"),gbc);
+        // tf2=new JTextField(5); 
+        // gbc.gridx=1; 
+        // p.add(tf2,gbc);
 
-        gbc.gridx=0; 
-        gbc.gridy=5; 
-        p.add(new JLabel("分3:"),gbc);
-        tf3=new JTextField(5); 
-        gbc.gridx=1; 
-        p.add(tf3,gbc);
+        // gbc.gridx=0; 
+        // gbc.gridy=5; 
+        // p.add(new JLabel("分3:"),gbc);
+        // tf3=new JTextField(5); 
+        // gbc.gridx=1; 
+        // p.add(tf3,gbc);
 
-        gbc.gridx=0; 
-        gbc.gridy=6; 
-        p.add(new JLabel("分4:"),gbc);
-        tf4=new JTextField(5); 
-        gbc.gridx=1; 
-        p.add(tf4,gbc);
+        // gbc.gridx=0; 
+        // gbc.gridy=6; 
+        // p.add(new JLabel("分4:"),gbc);
+        // tf4=new JTextField(5); 
+        // gbc.gridx=1; 
+        // p.add(tf4,gbc);
 
-        gbc.gridx=0; 
-        gbc.gridy=7; 
-        p.add(new JLabel("分5:"),gbc);
-        tf5=new JTextField(5); 
-        gbc.gridx=1; 
-        p.add(tf5,gbc);
+        // gbc.gridx=0; 
+        // gbc.gridy=7; 
+        // p.add(new JLabel("分5:"),gbc);
+        // tf5=new JTextField(5); 
+        // gbc.gridx=1; 
+        // p.add(tf5,gbc);
+
+        tf = new JTextField[com.example.studentgrades.dao.Config.MAX_SUBJECT];
+        for (int i = 0; i < com.example.studentgrades.dao.Config.MAX_SUBJECT; i++) {
+            gbc.gridx = 0;
+            gbc.gridy = 3 + i;
+            p.add(new JLabel("分" + (i + 1) + ":"), gbc);
+            tf[i] = new JTextField(com.example.studentgrades.dao.Config.MAX_SUBJECT);
+            gbc.gridx = 1;
+            p.add(tf[i], gbc);
+        }
 
         if(s!=null){
             tfId.setText(s.getId()); tfId.setEditable(false);
             tfName.setText(s.getName());
             tfClass.setText(s.getClassName());
-            tf1.setText(String.valueOf(s.getScore1()));
-            tf2.setText(String.valueOf(s.getScore2()));
-            tf3.setText(String.valueOf(s.getScore3()));
-            tf4.setText(String.valueOf(s.getScore4()));
-            tf5.setText(String.valueOf(s.getScore5()));
+            // 这里需要获取学生的成绩数据
+            try {
+                ScoreDAO scoreDAO = new ScoreDAO();
+                double[] scores = scoreDAO.findScoresByStudent(s.getId());
+                if(scores != null) {
+                    for(int i = 0; i < tf.length && i < scores.length; i++) {
+                        tf[i].setText(String.valueOf(scores[i]));
+                    }
+                }
+            } catch(Exception ex) {
+                ex.printStackTrace();
+            }
             student=s;
         }
 
@@ -101,21 +119,21 @@ public class AddEditDialog extends JDialog {
                 String id=tfId.getText().trim();
                 String name=tfName.getText().trim();
                 String cls=tfClass.getText().trim();
-                double sc1=Double.parseDouble(tf1.getText().trim());
-                double sc2=Double.parseDouble(tf2.getText().trim());
-                double sc3=Double.parseDouble(tf3.getText().trim());
-                double sc4=Double.parseDouble(tf4.getText().trim());
-                double sc5=Double.parseDouble(tf5.getText().trim());
+                // double sc1=Double.parseDouble(tf1.getText().trim());
+                // double sc2=Double.parseDouble(tf2.getText().trim());
+                // double sc3=Double.parseDouble(tf3.getText().trim());
+                // double sc4=Double.parseDouble(tf4.getText().trim());
+                // double sc5=Double.parseDouble(tf5.getText().trim());
+                double[] scores = new double[com.example.studentgrades.dao.Config.MAX_SUBJECT];
+                for (int i = 0; i < com.example.studentgrades.dao.Config.MAX_SUBJECT; i++) {
+                    scores[i] = Double.parseDouble(tf[i].getText().trim());
+                }
                 if(student==null){
-                    student=new Student(id,name,cls,sc1,sc2,sc3,sc4,sc5);
+                    student=new Student(id,name,cls,scores);
                 } else {
                     student.setName(name);
                     student.setClassName(cls);
-                    student.setScore1(sc1);
-                    student.setScore2(sc2);
-                    student.setScore3(sc3);
-                    student.setScore4(sc4);
-                    student.setScore5(sc5);
+                    student.setScores(scores);
                 }
                 saved=true;
                 dispose();

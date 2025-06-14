@@ -21,9 +21,7 @@ public class StudentDAO {
             ps.executeUpdate();
         }
         // 再插入成绩
-        scoreDAO.insertScores(s.getId(), new double[]{
-            s.getScore1(), s.getScore2(), s.getScore3(), s.getScore4(), s.getScore5()
-        });
+        scoreDAO.insertScores(s.getId(), s.getScores());
     }
 
     /** 更新学生基本信息及成绩 */
@@ -38,9 +36,7 @@ public class StudentDAO {
             ps.executeUpdate();
         }
         // 再更新成绩
-        scoreDAO.updateScores(s.getId(), new double[]{
-            s.getScore1(), s.getScore2(), s.getScore3(), s.getScore4(), s.getScore5()
-        });
+        scoreDAO.updateScores(s.getId(), s.getScores());
     }
 
     /** 删除学生及其成绩（级联） */
@@ -65,11 +61,7 @@ public class StudentDAO {
                 Student s = mapStudent(rs);
                 // 填充成绩
                 double[] scores = scoreDAO.findScoresByStudent(id);
-                s.setScore1(scores[0]);
-                s.setScore2(scores[1]);
-                s.setScore3(scores[2]);
-                s.setScore4(scores[3]);
-                s.setScore5(scores[4]);
+                s.setScores(scores);
                 return s;
             }
             return null;
@@ -86,11 +78,7 @@ public class StudentDAO {
             while (rs.next()) {
                 Student s = mapStudent(rs);
                 double[] scores = scoreDAO.findScoresByStudent(s.getId());
-                s.setScore1(scores[0]);
-                s.setScore2(scores[1]);
-                s.setScore3(scores[2]);
-                s.setScore4(scores[3]);
-                s.setScore5(scores[4]);
+                s.setScores(scores);
                 list.add(s);
             }
         }
@@ -99,11 +87,15 @@ public class StudentDAO {
 
     /** 仅映射学生基本信息，不包含成绩 */
     private Student mapStudent(ResultSet rs) throws SQLException {
+        double[] tmpScores = new double[Config.MAX_SUBJECT]; // 初始化成绩数组
+        for(int i = 0; i < tmpScores.length; i++) {
+            tmpScores[i] = 0; // 默认成绩为0
+        }
         return new Student(
             rs.getString("id"),
             rs.getString("name"),
             rs.getString("class"),
-            0, 0, 0, 0, 0  // 成绩稍后填充
+            tmpScores  // 成绩稍后填充
         );
     }
 
@@ -118,11 +110,7 @@ public class StudentDAO {
             while (rs.next()) {
                 Student s = mapStudent(rs);
                 double[] scores = scoreDAO.findScoresByStudent(s.getId());
-                s.setScore1(scores[0]);
-                s.setScore2(scores[1]);
-                s.setScore3(scores[2]);
-                s.setScore4(scores[3]);
-                s.setScore5(scores[4]);
+                s.setScores(scores);
                 list.add(s);
             }
         }

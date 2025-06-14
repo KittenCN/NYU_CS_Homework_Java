@@ -1,4 +1,4 @@
-
+package Final_Exam;
 import java.util.*; 
 
 public class SplitNegativePositive{
@@ -11,7 +11,6 @@ public class SplitNegativePositive{
             list.add( in.nextInt() ); 
         }
         
-        //TODO: complete this method
         //(you may implement additional methods in this class if you wish)
         
         PriorityQueue<Integer> negative = new PriorityQueue<>(); 

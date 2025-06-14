@@ -57,14 +57,14 @@ public class ScoreDAO {
      */
     public double[] findScoresByStudent(String studentId) throws SQLException {
         String sql = "SELECT subject_no, score FROM score WHERE student_id = ? ORDER BY subject_no";
-        double[] scores = new double[5];
+        double[] scores = new double[Config.MAX_SUBJECT];
         try (Connection conn = DatabaseManager.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, studentId);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 int no = rs.getInt("subject_no");
-                if (no >= 1 && no <= 5) {
+                if (no >= 1 && no <= Config.MAX_SUBJECT) {
                     scores[no - 1] = rs.getDouble("score");
                 }
             }
